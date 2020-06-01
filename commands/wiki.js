@@ -16,7 +16,7 @@ for(const categ of categories){
 		console.log("Loaded Wiki for: "+subjName);
 		try{
 			const subjContent = require('../WikiJsons/'+categ+'/'+file);
-			subjectMap.set(subjName, subjContent)
+			subjectMap.set(subjName, subjContent);
 		}catch(error){
 			console.log(error)
 		}
@@ -84,31 +84,36 @@ module.exports = {
 				.setTitle(searchResult.title)
 				.setAuthor('Spiral Bot', 'https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/botProfilePic.png', 'https://github.com/Miyamura80/Node-Js-Discord-Bot')
 				.setDescription(searchResult.description)
-				.addField('__**Type:**__', searchResult.type)
+				.addField('__**Type:**__', searchResult.type, true)
 				.setFooter('Please help improving this wiki by messaging Eimi for any errors, typos, corrections', devUrl);
 
 		if(searchResult.image){
-			subjWiki.setThumbnail(searchResult.image);
+			const imgUrl = "https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/WikiArts/"+searchResult.image
+			subjWiki.setImage(imgUrl);
+			console.log(imgUrl)
+		}else{
+			const imgUrl = "https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/WikiArts/noImage.jpg"
+			subjWiki.setThumbnail(imgUrl);
 		}
 
-		if(searchResult.combat.length){
-			subjWiki.addField(':crossed_swords:__**Combat:**__', searchResult.combat, true)
+		if(searchResult.combat){
+			subjWiki.addField(':crossed_swords:__**Combat:**__', searchResult.combat)
 		}
 
-		if(searchResult.origin.length){
-			subjWiki.addField(':homes:__**Origin:**__', searchResult.origin, true)
+		if(searchResult.origin){
+			subjWiki.addField(':homes:__**Origin:**__', searchResult.origin)
 		}
 
-		if(searchResult.allegiance.length){
-			subjWiki.addField(':handshake:__**Allegiance:**__', searchResult.allegiance, true)
+		if(searchResult.allegiance){
+			subjWiki.addField(':handshake:__**Allegiance:**__', searchResult.allegiance)
 		}
 
-		if(searchResult.charRelationships.length){
-			subjWiki.addField(':people_holding_hands:__**Character Relationships:**__', searchResult.charRelationships, true)
+		if(searchResult.charRelationships){
+			subjWiki.addField(':people_holding_hands:__**Character Relationships:**__', searchResult.charRelationships)
 		}
 
-		if(searchResult.trivia.length){
-			subjWiki.addField(':capital_abcd:__**Trivia:**__', searchResult.trivia, true)
+		if(searchResult.trivia){
+			subjWiki.addField(':capital_abcd:__**Trivia:**__', searchResult.trivia)
 		}
 
 
