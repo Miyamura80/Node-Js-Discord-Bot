@@ -24,6 +24,7 @@ var dev = null;
 client.once('ready', () => {
 	console.log('Ready!');
 	const devID = '270972813739819009'
+	client.user.setActivity('with the world')
 	dev = client.users.cache.get(devID)
 
 });

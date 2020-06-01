@@ -2,22 +2,26 @@ const {prefix} = require('../config.json');
 const Discord = require('discord.js');
 const fs = require('fs');
 
-const textFiles = fs.readdirSync('./WikiTextFiles').filter(file => file.endsWith('.txt'));
 
-//MAYBE remove this
-
+const categories = ["Characters", "Groups", "Items", "Locations", "Concepts"]
 const subjectMap = new Discord.Collection();
 
-for (const file of textFiles){
-	const subjName = file.substring(0, file.length-3)
-	console.log("Loaded Wiki for: "+subjName);
-	const subjContent = fs.readFile('./WikiTextFiles/'+file,"utf8",function(err,data){
-		if(err) throw err;
-		return data;
-	});
-	subjectMap.set(subjName, subjContent)
+for(const categ of categories){
+	console.log("Loading: "+categ);
+	console.log("------------------------------------------------");
+	const jsonFiles = fs.readdirSync('./WikiJsons/'+categ).filter(file => file.endsWith('.json'));
+	
+	for (const file of jsonFiles){
+		const subjName = file.substring(0, file.length-5).toLowerCase()
+		console.log("Loaded Wiki for: "+subjName);
+		try{
+			const subjContent = require('../WikiJsons/'+categ+'/'+file);
+			subjectMap.set(subjName, subjContent)
+		}catch(error){
+			console.log(error)
+		}
+	}
 }
-
 
 
 module.exports = {
@@ -26,12 +30,13 @@ module.exports = {
 	aliases: ['wikia'],
 	usage: '[keyword] \nWhere keyword is the subject in question to search',
 	cooldown: 1,
-	execute(message, args) {
+	execute(message, args, dev) {
 		const data = []
 		const {commands} = message.client;
 
 		if(!args.length){
 			
+
 			const exampleEmbed = new Discord.MessageEmbed()
 				.setColor('#0099ff')
 				.setTitle('Spiral of Dietheld Wiki')
@@ -65,20 +70,50 @@ module.exports = {
 		}
 
 		const name = args[0].toLowerCase();
-		const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+		const searchResult = subjectMap.get(name)
 
-		if (!command) {
-			return message.reply('that\'s not a valid command!');
+
+		if (!searchResult) {
+			return message.channel.send('Search term not found.');
 		}
 
-		data.push(`**Name:** ${command.name}`);
 
-		if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`);
-		if (command.description) data.push(`**Description:** ${command.description}`);
-		if (command.usage) data.push(`**Usage:** ${prefix}${command.name} ${command.usage}`);
+		const devUrl = dev.displayAvatarURL({ format: "png", dynamic: true })
+		const subjWiki = new Discord.MessageEmbed()
+				.setColor('#fc00fc')
+				.setTitle(searchResult.title)
+				.setAuthor('Spiral Bot', 'https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/botProfilePic.png', 'https://github.com/Miyamura80/Node-Js-Discord-Bot')
+				.setDescription(searchResult.description)
+				.addField('__**Type:**__', searchResult.type)
+				.setFooter('Please help improving this wiki by messaging Eimi for any errors, typos, corrections', devUrl);
 
-		data.push(`**Cooldown:** ${command.cooldown || 3} second(s)`);
+		if(searchResult.image){
+			subjWiki.setThumbnail(searchResult.image);
+		}
 
-		message.channel.send(data, { split: true });
+		if(searchResult.combat.length){
+			subjWiki.addField(':crossed_swords:__**Combat:**__', searchResult.combat, true)
+		}
+
+		if(searchResult.origin.length){
+			subjWiki.addField(':homes:__**Origin:**__', searchResult.origin, true)
+		}
+
+		if(searchResult.allegiance.length){
+			subjWiki.addField(':handshake:__**Allegiance:**__', searchResult.allegiance, true)
+		}
+
+		if(searchResult.charRelationships.length){
+			subjWiki.addField(':people_holding_hands:__**Character Relationships:**__', searchResult.charRelationships, true)
+		}
+
+		if(searchResult.trivia.length){
+			subjWiki.addField(':capital_abcd:__**Trivia:**__', searchResult.trivia, true)
+		}
+
+
+
+
+		message.channel.send(subjWiki);
 	},
 };

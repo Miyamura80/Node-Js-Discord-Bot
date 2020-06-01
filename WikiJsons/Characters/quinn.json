@@ -1,0 +1,22 @@
+{
+	"title": "Quinn the armless",
+	
+	"description": "A drunken martial arts master, first seen in the taverns of Glimmerdrift [1]. Quinn lost his arms 10 years ago, and learned \"Drunken Arts of the legs\"",
+	
+	"combat": "Quinn fights with his legs, through a series of kicking attacks. His signature kicks involve him using his often drunken state to increase randomness of effectiveness, but increase the upper bound of his damage output.",
+	
+	"allegiance" : "Part of the way of the hand",
+
+	"origin": "Unknown",
+
+	"charRelationships" : "-None known as of now",
+
+	"hyperlinks": ["glimmerdrift"],
+
+	"trivia" : "None Known",
+
+	"type": "Characters",
+
+	"image": "Drunken_fist.png" 
+
+}
