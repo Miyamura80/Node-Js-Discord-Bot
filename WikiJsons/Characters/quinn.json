@@ -1,5 +1,7 @@
 {
 	"title": "Quinn the armless",
+
+	"name":"quinn",
 	
 	"description": "A drunken martial arts master, first seen in the taverns of Glimmerdrift [1]. Quinn lost his arms 10 years ago, and learned \"Drunken Arts of the legs\"",
 	
@@ -17,6 +19,10 @@
 
 	"type": "Characters",
 
-	"image": "Drunken_Fist.png" 
+	"image": "Drunken_Fist.png",
+
+	"lastSeen": "Glimmerdrift",
+
+	"aliases": ["armless"]
 
 }

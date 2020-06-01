@@ -40,7 +40,7 @@ module.exports = {
 				},
 				{
 				  "name": "**Hosting:**",
-				  "value": "[Raspberry Pi 2B](https://www.raspberrypi.org) on my desk",
+				  "value": "(Eventually) [Raspberry Pi 2B](https://www.raspberrypi.org) on my desk",
 				  "inline": true
 				},
 				{

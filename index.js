@@ -30,7 +30,32 @@ client.once('ready', () => {
 });
 
 
+//LOADING FILES
+const categories = ["Characters", "Groups", "Items", "Locations", "Concepts"]
+const subjectMap = new Discord.Collection();
 
+for(const categ of categories){
+	console.log("Loading: "+categ);
+	console.log("------------------------------------------------");
+	const jsonFiles = fs.readdirSync('./WikiJsons/'+categ+'/').filter(file => file.endsWith('.json'));
+	
+	for (const file of jsonFiles){
+		const subjName = file.substring(0, file.length-5).toLowerCase()
+		console.log("Loaded Wiki for: "+subjName);
+		try{
+			const subjContent = require('./WikiJsons/'+categ+'/'+file);
+			subjectMap.set(subjName, subjContent);
+		}catch(error){
+			console.log(error)
+		}
+	}
+}
+
+
+
+
+
+//MAIN SEQUENCE
 //on -> trigger multiple times
 client.on('message', message => {
 
@@ -80,7 +105,7 @@ client.on('message', message => {
 
 	//Main execution
 	try{
-		command.execute(message, args,dev);
+		command.execute(message, args,dev,subjectMap);
 	}catch (error){
 		console.error(error);
 		message.reply('There was an error trying to execute that command!')

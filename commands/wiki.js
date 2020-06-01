@@ -3,25 +3,7 @@ const Discord = require('discord.js');
 const fs = require('fs');
 
 
-const categories = ["Characters", "Groups", "Items", "Locations", "Concepts"]
-const subjectMap = new Discord.Collection();
 
-for(const categ of categories){
-	console.log("Loading: "+categ);
-	console.log("------------------------------------------------");
-	const jsonFiles = fs.readdirSync('./WikiJsons/'+categ).filter(file => file.endsWith('.json'));
-	
-	for (const file of jsonFiles){
-		const subjName = file.substring(0, file.length-5).toLowerCase()
-		console.log("Loaded Wiki for: "+subjName);
-		try{
-			const subjContent = require('../WikiJsons/'+categ+'/'+file);
-			subjectMap.set(subjName, subjContent);
-		}catch(error){
-			console.log(error)
-		}
-	}
-}
 
 
 module.exports = {
@@ -30,15 +12,13 @@ module.exports = {
 	aliases: ['wikia'],
 	usage: '[keyword] \nWhere keyword is the subject in question to search',
 	cooldown: 1,
-	execute(message, args, dev) {
-		const data = []
+	execute(message, args, dev, subjectMap) {
 		const {commands} = message.client;
 
 		if(!args.length){
 			
-
 			const exampleEmbed = new Discord.MessageEmbed()
-				.setColor('#0099ff')
+				.setColor('#fc00fc')
 				.setTitle('Spiral of Dietheld Wiki')
 				.setURL('https://discord.js.org/')
 				.setDescription('Hi, I will provide narrative information about Spiral of Dietheld')
@@ -89,11 +69,16 @@ module.exports = {
 
 		if(searchResult.image){
 			const imgUrl = "https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/WikiArts/"+searchResult.image
-			subjWiki.setImage(imgUrl);
-			console.log(imgUrl)
-		}else{
-			const imgUrl = "https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/WikiArts/noImage.jpg"
 			subjWiki.setThumbnail(imgUrl);
+		}else{
+			const imgUrl = "https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/WikiArts/unknown.png"
+			subjWiki.setThumbnail(imgUrl);
+			console.log("No img found")
+		}
+
+		if(searchResult.lastSeen){
+			subjWiki.addField(':eye:__**Last Seen:**__', searchResult.lastSeen)
+			console.log("3");
 		}
 
 		if(searchResult.combat){

@@ -1,0 +1,3 @@
+-Fix updatewiki so it works
+-Include option to allow user to upload json through discord code embed feature
+    >NECESSARY ATTRIBUTES: title, name (same as filename), "description", type
