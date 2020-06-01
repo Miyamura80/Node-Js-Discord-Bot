@@ -1,8 +1,10 @@
 **Node JS Discord Bot**
 
-Before you start, you must add a config.json file to the root directory, which may look something like the following:
+Before you start, you must add a `config.json` file to the root directory, which may look something like the following:
 
-```
+
+config.json
+```json
 {
 	"prefix": "!",
 	"token": "your token here",
