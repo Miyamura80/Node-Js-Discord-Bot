@@ -1,0 +1,14 @@
+{
+	"title": "Twin Legion",
+
+	"name" : "twinlegion",
+	
+	"description": "A legion that is said to be ruled by 2 twins, each ruling a hemisphere of the world. Commands a group of proud knights, which Haveron [1] is part of.",
+
+	"hyperlinks": ["haveron"],
+
+	"type": "Group",
+
+	"aliases": ["twin legions", "twin legion", "twin_legion"]
+
+}

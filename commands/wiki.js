@@ -49,8 +49,10 @@ module.exports = {
 				});
 		}
 
-		const name = args[0].toLowerCase();
-		const searchResult = subjectMap.get(name)
+		const name = args.join(' ').toLowerCase()
+		console.log(name);
+		// const name = args[0].toLowerCase().join;
+		const searchResult = subjectMap.get(name) || subjectMap.find(sbj => sbj.aliases && sbj.aliases.includes(name));
 
 
 		if (!searchResult) {
@@ -73,12 +75,10 @@ module.exports = {
 		}else{
 			const imgUrl = "https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/WikiArts/unknown.png"
 			subjWiki.setThumbnail(imgUrl);
-			console.log("No img found")
 		}
 
 		if(searchResult.lastSeen){
 			subjWiki.addField(':eye:__**Last Seen:**__', searchResult.lastSeen)
-			console.log("3");
 		}
 
 		if(searchResult.combat){
