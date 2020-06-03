@@ -1,1 +1,1 @@
-worker: node indexForHeroku.js
+worker: node index.js

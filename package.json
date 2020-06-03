@@ -2,7 +2,7 @@
   "name": "dnd_bot_nodejs",
   "version": "1.0.0",
   "description": "My own discord bot for providing wiki, maps, other utilities for dnd",
-  "main": "indexForHeroku.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
