@@ -35,8 +35,8 @@ const categories = ["Characters", "Groups", "Items", "Locations", "Concepts"]
 const subjectMap = new Discord.Collection();
 
 for(const categ of categories){
-	console.log("Loading: "+categ);
 	console.log("------------------------------------------------");
+	console.log("Loading: "+categ);
 	const jsonFiles = fs.readdirSync('./WikiJsons/'+categ+'/').filter(file => file.endsWith('.json'));
 	
 	for (const file of jsonFiles){
