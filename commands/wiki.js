@@ -14,39 +14,32 @@ module.exports = {
 	cooldown: 1,
 	execute(message, args, dev, subjectMap) {
 		const {commands} = message.client;
+		const devUrl = dev.displayAvatarURL({ format: "png", dynamic: true })
 
 		if(!args.length){
 			
-			const exampleEmbed = new Discord.MessageEmbed()
+			const subjLists = new Discord.MessageEmbed()
 				.setColor('#fc00fc')
 				.setTitle('Spiral of Dietheld Wiki')
-				.setURL('https://discord.js.org/')
-				.setDescription('Hi, I will provide narrative information about Spiral of Dietheld')
-				.setThumbnail('https://i.imgur.com/wSTFkRM.png')
-				.addFields(
-					{ name: 'Regular field title', value: 'Some value here' },
-					{ name: '\u200B', value: '\u200B' },
-					{ name: 'Inline field title', value: 'Some value here', inline: true },
-					{ name: 'Inline field title', value: 'Some value here', inline: true },
-				)
-				.addField('Inline field title', 'Some value here', true)
-				.setImage('https://i.imgur.com/wSTFkRM.png')
-				.setTimestamp()
-				.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+				.setAuthor('Spiral Bot', 'https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/botProfilePic.png', 'https://github.com/Miyamura80/Node-Js-Discord-Bot')
+				.setDescription(`You can search information about the following by: \`${prefix}wiki [search term]\` `)
+				.setFooter('Please help improving this wiki by messaging Eimi for any errors, typos, corrections', devUrl);
 
-			data.push(commands.map(command => `\`${command.name}\``).join(', '));
-			data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
+			const categories = ["Characters", "Groups", "Items", "Locations", "Concepts"];
+			for(const categ of categories){
+				var categList = "None";
+				for(const m of subjectMap){
+					if(m[1].type==categ){
+						if(categList=="None"){
+							categList = ""
+						}
+						categList += `\n ${m[1].name}`;
+					}
+				}
+				subjLists.addField(`__**${categ}**__`,categList, true);
+			}
+			return message.channel.send(subjLists);
 
-			//split argument ensures that if over 2000 character limit, will split it appropriately
-			return message.author.send(data, { split: true })
-				.then(() => {
-					if (message.channel.type === 'dm') return;
-					message.reply('I\'ve sent you a DM with all my commands!');
-				})
-				.catch(error => {
-					console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
-					message.reply('it seems like I can\'t DM you! Do you have DMs disabled?');
-				});
 		}
 
 		const name = args.join(' ').toLowerCase()
@@ -60,7 +53,7 @@ module.exports = {
 		}
 
 
-		const devUrl = dev.displayAvatarURL({ format: "png", dynamic: true })
+		
 		const subjWiki = new Discord.MessageEmbed()
 				.setColor('#fc00fc')
 				.setTitle(searchResult.title)
