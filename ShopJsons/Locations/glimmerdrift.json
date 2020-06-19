@@ -1,0 +1,14 @@
+{
+	"title": "Glimmerdrift",
+
+	"name" : "glimmerdrift",
+	
+	"description": "A small town thogutht to be located below Embalming lake [1]. Surrounded by walls on one side and a cliff into darkness on the other",
+
+	"allegiance": "Neutral",
+
+	"hyperlinks": ["embalming_lake"],
+
+	"type": "Locations"
+
+}

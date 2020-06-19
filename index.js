@@ -55,6 +55,7 @@ for(const categ of categories){
 
 
 
+
 //MAIN SEQUENCE
 //on -> trigger multiple times
 client.on('message', message => {

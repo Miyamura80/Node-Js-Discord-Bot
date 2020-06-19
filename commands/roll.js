@@ -12,10 +12,16 @@ module.exports = {
 			num = parseInt(args[0])
 		}
 
+		if(isNaN(num)){
+			message.channel.send(`Please enter a valid number!`);
+			return
+		}
+
 		if(args[1]){
 			var sum = 0;
 			var results = []
 			const numRoll = parseInt(args[1])
+
 			for(var i=0; i < numRoll; i++){
 				const result = Math.floor(Math.random() * num) + 1
 				sum += result
@@ -29,7 +35,6 @@ module.exports = {
 
 		const result = Math.floor(Math.random() * num) + 1
 		
-
 		if(result==1){
 			message.channel.send(`Catastrophe is coming... you rolled a ||${result}|| :fearful:`);	
 		}else if(result==20){

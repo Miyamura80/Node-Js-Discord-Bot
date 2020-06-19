@@ -1,0 +1,19 @@
+{
+	"title": "Theffania's  Sanitarium",
+	
+	"description": "As long as my eyes are out, even those that die will come back to life. What healing do you need today?",
+
+	"allegiance": {
+		"way": 1.0,
+		"children": 1.5,
+		"communion": 1.5,
+		"sanguine": 1.0
+	},
+
+	"hyperlinks": ["embalming_hand"],
+
+	"aliases" : ["doctor", "hospital","sanitarium"],
+
+	"type": "Locations"
+
+}

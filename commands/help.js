@@ -1,5 +1,5 @@
 const {prefix} = require('../config.json');
-
+const Discord = require('discord.js');
 
 module.exports = {
 	name: 'help',
@@ -7,26 +7,23 @@ module.exports = {
 	aliases: ['commands'],
 	usage: '[command name]',
 	cooldown: 1,
-	execute(message, args) {
+	execute(message, args, dev) {
 		const data = []
-		const {commands} = message.client;
+		const {commands} = message.client;		
+
 
 		if(!args.length){
-			data.push('**Here\'s a list of all my commands:**');
+			const helpList = new Discord.MessageEmbed()
+				.setColor('#fc00fc')
+				.setTitle('**Command List**')
+				.setAuthor('Spiral Bot', 'https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/botProfilePic.png', 'https://github.com/Miyamura80/Node-Js-Discord-Bot')
+				.setDescription(`You can search information about the following by: \`${prefix}wiki [search term]\` `)
+				.setFooter(`For more detailed usage info, do ${prefix}help <commandName>`);
 			//Just put them in a list
-			data.push(commands.map(command => `\`${command.name}\``).join(', '));
-			data.push(`\nYou can send \`${prefix}help [command name]\` to get info on a specific command!`);
+			const cmdlistStr = commands.map(command => `\`${command.name}\``).join(', ');
+			helpList.addField(`__**Commands**__`,cmdlistStr, true);
 
-			//split argument ensures that if over 2000 character limit, will split it appropriately
-			return message.author.send(data, { split: true })
-				.then(() => {
-					if (message.channel.type === 'dm') return;
-					message.reply('I\'ve sent you a DM with all my commands!');
-				})
-				.catch(error => {
-					console.error(`Could not send help DM to ${message.author.tag}.\n`, error);
-					message.reply('it seems like I can\'t DM you! Do you have DMs disabled?');
-				});
+			return message.channel.send(helpList)
 		}
 
 		const name = args[0].toLowerCase();
@@ -36,14 +33,18 @@ module.exports = {
 			return message.reply('that\'s not a valid command!');
 		}
 
-		data.push(`__**Name:**__ ${command.name}`);
+		const helpSpecificList = new Discord.MessageEmbed()
+				.setColor('#fc00fc')
+				.setTitle(`**Name: ${prefix}${command.name}**`);
 
-		if (command.aliases) data.push(`__**Aliases:**__ ${command.aliases.join(', ')}`);
-		if (command.description) data.push(`__**Description:**__ ${command.description}`);
-		if (command.usage) data.push(`__**Usage:**__ \`${prefix}${command.name} ${command.usage}\``);
+		const inlineYes = false;
+		if(command.aliases){
+			helpSpecificList.addField(`__**Aliases**__`,`${command.aliases.join(', ')}`, inlineYes);
+		}
+		if (command.description) helpSpecificList.addField(`__**Description**__`,`${command.description}`, inlineYes);
+		if (command.usage) helpSpecificList.addField(`__**Usage**__`,`\`${prefix}${command.name} ${command.usage}\``, inlineYes);
+		helpSpecificList.addField(`__**Cooldown**__`,`${command.cooldown || 3} second(s)`, inlineYes);
 
-		data.push(`__**Cooldown:**__ ${command.cooldown || 3} second(s)`);
-
-		message.channel.send(data, { split: true });
+		message.channel.send(helpSpecificList);
 	},
 };

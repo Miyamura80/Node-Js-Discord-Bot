@@ -14,7 +14,7 @@ module.exports = {
 		delete require.cache[require.resolve(`../WikiJsons/${subject.type}/${subject.name}.json`)];
 
 		try {
-			const newSubject = require(`./${subject.name}.json`);
+			const newSubject = require(`../WikiJsons/${subject.type}/${subject.name}.json`);
 			subjectMap.set(newSubject.name, newSubject);
 		} catch (error) {
 			console.log(error);
