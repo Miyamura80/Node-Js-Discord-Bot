@@ -3,6 +3,7 @@ module.exports = {
 	description: 'Reloads Wiki Content for given subject',
 	args: true,
 	aliases: ['upw','updateWiki'],
+	category: 'debug',
 	execute(message, args, dev, subjectMap) {
 		const subjectName = args[0].toLowerCase();
 		const subject = subjectMap.get(subjectName) || subjectMap.find(sbj => sbj.aliases && sbj.aliases.includes(subjectName));

@@ -6,6 +6,7 @@ module.exports = {
 	description: 'List all of my commands or info about a specific command.',
 	aliases: ['commands'],
 	usage: '[command name]',
+	category: 'info',
 	cooldown: 1,
 	execute(message, args, dev) {
 		const data = []
@@ -20,8 +21,21 @@ module.exports = {
 				.setDescription(`You can search information about the following by: \`${prefix}wiki [search term]\` `)
 				.setFooter(`For more detailed usage info, do ${prefix}help <commandName>`);
 			//Just put them in a list
-			const cmdlistStr = commands.map(command => `\`${command.name}\``).join(', ');
-			helpList.addField(`__**Commands**__`,cmdlistStr, true);
+			const categories = []
+			const cmdNames = commands.map(command => `${command.name}`)
+			const cmdCategs = commands.map(command => `${command.category}`)
+
+			var i = 0;
+			while(i<cmdNames.length){
+				if(!categories.includes(cmdCategs[i])){
+					categories.push(cmdCategs[i]);
+				}
+				i += 1;
+			}
+			for(const categ of categories){
+				const cmdlistStr = commands.filter(command => command.category==categ).map(command => `\`${command.name}\``).join(', ');
+				helpList.addField(`__**${categ}**__`,cmdlistStr, false);
+			}
 
 			return message.channel.send(helpList)
 		}

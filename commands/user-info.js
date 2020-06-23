@@ -2,6 +2,7 @@ module.exports = {
 	name: 'user-info',
 	aliases: ['userinfo'],
 	description: 'Returns the details about the user',
+	category: 'info',
 	usage: '<@Person>      \n(Person specified to oneself by default)',
 	cooldown: 5,
 	execute(message, args) {

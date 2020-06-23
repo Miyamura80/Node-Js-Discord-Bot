@@ -10,6 +10,7 @@ module.exports = {
 	name: 'wiki',
 	description: 'Provides information currently known about the characters/locations/items in the Spiral of Dietheld world.',
 	aliases: ['wikia'],
+	category: 'utility',
 	usage: '<keyword> \nWhere keyword is the subject in question to search',
 	cooldown: 1,
 	execute(message, args, dev, subjectMap) {
@@ -29,6 +30,7 @@ module.exports = {
 			for(const categ of categories){
 				var categList = "None";
 				for(const m of subjectMap){
+
 					if(m[1].type==categ){
 						if(categList=="None"){
 							categList = ""
@@ -126,9 +128,9 @@ module.exports = {
 
 					});
 
-					// collector.on('end', (reaction,user) => {
-					// 	console.log('ending collection')
-					// });
+					collector.on('end', (reaction,user) => {
+						sentEmbed.reactions.removeAll()
+					});
 				}
 			});
 		}

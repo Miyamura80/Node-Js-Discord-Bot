@@ -5,6 +5,7 @@ module.exports = {
 	name: 'botinfo',
 	aliases: ['bot_info','bot-info'],
 	description: 'Returns Bot Info',
+	category: 'info',
 	cooldown: 2,
 	execute(message, args,dev) {
 		try{
@@ -51,6 +52,11 @@ module.exports = {
 				{
 				  "name": "** :warning: WARNING:**",
 				  "value": "The github repository contains spoilers",
+				  "inline": true
+				},
+				{
+				  "name": "**Suggestions/Bug reports**",
+				  "value": "[Please note suggestions, bugs here](https://forms.gle/NXnDkHyU3w7HPnB6A)",
 				  "inline": true
 				}
 

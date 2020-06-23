@@ -10,8 +10,9 @@ module.exports = {
 	args: true,
 	aliases: ['hit','thwip'],
 	description: 'Hit another user',
+	category: 'fun',
 	usage: '<@Person>      \n(Target Person)',
-	cooldown: 5,
+	cooldown: 7,
 	execute(message, args,dev) {
 		try{
 			// const target = message.guild.members.fetch(mem => mem.username == "Eimi");

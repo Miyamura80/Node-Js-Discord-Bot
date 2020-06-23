@@ -3,9 +3,33 @@ const fs = require('fs');
 const {prefix, token} = require("./config.json");
 //require discord.js module
 const Discord = require('discord.js');
+const Sequelize = require('sequelize');
 const client = new Discord.Client();
 
 client.commands = new Discord.Collection();
+
+//DATABASES
+const sequelize = new Sequelize('database', 'user', 'password', {
+	host: 'localhost',
+	dialect: 'sqlite',
+	logging: false,
+	// SQLite only
+	storage: 'database.sqlite',
+});
+
+const Tags = sequelize.define('tags', {
+	name: {
+		type: Sequelize.STRING,
+		unique: true,
+	},
+	description: Sequelize.TEXT,
+	username: Sequelize.STRING,
+	usage_count: {
+		type: Sequelize.INTEGER,
+		defaultValue: 0,
+		allowNull: false,
+	},
+});
 
 //Return all command file names in an array of string
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -24,8 +48,14 @@ var dev = null;
 client.once('ready', () => {
 	console.log('Ready!');
 	const devID = '270972813739819009'
-	client.user.setActivity('with the world')
+	client.user.setActivity(`with the world | ${prefix}help`, {
+	  type: "PLAYING"
+	});
 	dev = client.users.cache.get(devID)
+
+
+
+	Tags.sync();
 
 });
 
@@ -66,15 +96,17 @@ client.on('message', message => {
 	const args = message.content.slice(prefix.length).split(/ +/);   //This splits by continued blanks, not just by ' '
 	const commandName = args.shift().toLowerCase();
 
-
+	//Get the command object (either by name || by alias)
 	const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName))
 
+	//If no command found, return
 	if(!command) return;
 
 	if (command.guildOnly && message.channel.type !== 'text') {
 		return message.reply('I can\'t execute that command inside DMs!');
 	}
 
+	//If command requires arguments
 	if(command.args && !args.length){
 		let reply = `You didn't provide any arguments, ${message.author}!`;
 		if(command.usage){
@@ -83,6 +115,7 @@ client.on('message', message => {
 		return message.channel.send(reply);
 	}
 
+	//If command not on cooldown
 	if(!cooldowns.has(command.name)){
 		cooldowns.set(command.name, new Discord.Collection());
 	}
@@ -104,9 +137,9 @@ client.on('message', message => {
 	}
 
 
-	//Main execution
+	//Main command execution
 	try{
-		command.execute(message, args,dev,subjectMap);
+		command.execute(message, args,dev,subjectMap, Tags);
 	}catch (error){
 		console.error(error);
 		message.reply('There was an error trying to execute that command!')
