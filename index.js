@@ -93,6 +93,9 @@ for(const categ of categories){
 //MAIN SEQUENCE
 //on -> trigger multiple times
 client.on('message', message => {
+	if(!message.author.bot){
+		currency.add(message.author.id, 1);
+	}
 
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 

@@ -8,10 +8,12 @@ module.exports = {
 	category: ':game_die: utility',
 	async execute(message, args,dev,subjectMap,currency) {
 		const target = message.author;
+
+
 		const user = await Users.findOne({ where: { user_id: target.id } });
 		const items = await user.getItems();
 		if (!items.length) return message.channel.send(`${target.tag} has nothing!`);
-		const balanceEmbed = new Discord.MessageEmbed()
+		const inventoryEmbed = new Discord.MessageEmbed()
 					.setColor('#fc00fc')
 					.setAuthor(`${target.name}`, `${target.displayAvatarURL({ format: "png", dynamic: true })}`)
 					.setDescription(`${items.map(i => `${i.amount} ${i.item.name}`).join(', ')}`)
@@ -19,6 +21,6 @@ module.exports = {
 		
 
 		
-		return message.channel.send(balanceEmbed);
+		return message.channel.send(inventoryEmbed);
 	},
 };
