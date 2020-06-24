@@ -7,6 +7,7 @@ module.exports = {
 	cooldown: 0.2,
 	category: ':money_with_wings: economy',
 	execute(message, args,dev,subjectMap,currency) { 
+		const user = await finduser.execute(message)
 		const target = message.mentions.users.first() || message.author;
 		const balanceEmbed = new Discord.MessageEmbed()
 					.setColor('#fc00fc')
