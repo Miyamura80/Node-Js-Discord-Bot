@@ -2,10 +2,7 @@ const {prefix} = require("../config.json");
 module.exports = {
 	name: 'finduser',
 	description: 'Utility function which returns a user based on name. Returns exactly one or none',
-	async execute(message) {
-
-		const input = message.content.slice(prefix.length).trim();
-		const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
+	async execute(message,commandArgs) {
 
 
 		if(!message.mentions.users.size){

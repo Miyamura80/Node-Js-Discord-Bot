@@ -17,14 +17,14 @@ module.exports = {
 			return message.channel.send(`Your avatar: <${message.author.displayAvatarURL({ format: "png", dynamic: true })}>`);
 		}
 
-		const user = await finduser.execute(message)
+		const user = await finduser.execute(message,commandArgs)
 		
-		console.log(user)
+		if(!user){
+			return message.channel.send('User not found');
+		}
+
 		message.channel.send(`Your username: ${user.username}\nYour ID: ${user.id}`)
 		return message.channel.send(`${user.username}'s avatar: <${user.displayAvatarURL({ format: "png", dynamic: true })}>`);
-
-		// send the entire array of strings as a message
-		// by default, discord.js will `.join()` the array with `\n`
 
 
 	},
