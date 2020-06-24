@@ -6,7 +6,7 @@ module.exports = {
 	description: 'List all of my commands or info about a specific command.',
 	aliases: ['commands'],
 	usage: '[command name]',
-	category: 'info',
+	category: ':information_source: info',
 	cooldown: 1,
 	execute(message, args, dev) {
 		const data = []

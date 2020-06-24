@@ -10,7 +10,7 @@ module.exports = {
 	name: 'wiki',
 	description: 'Provides information currently known about the characters/locations/items in the Spiral of Dietheld world.',
 	aliases: ['wikia'],
-	category: 'utility',
+	category: ':game_die: utility',
 	usage: '<keyword> \nWhere keyword is the subject in question to search',
 	cooldown: 1,
 	execute(message, args, dev, subjectMap) {

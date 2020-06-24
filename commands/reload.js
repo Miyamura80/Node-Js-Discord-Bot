@@ -2,7 +2,7 @@ module.exports = {
 	name: 'reload',
 	description: 'Reloads a command',
 	args: true,
-	category: 'debug',
+	category: ':bug: debug',
 	aliases: ['re'],
 	execute(message, args) {
 		const commandName = args[0].toLowerCase();

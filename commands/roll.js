@@ -3,7 +3,7 @@ module.exports = {
 	description: 'Roll a dice of whatever dice you want! (even ones tha)',
 	cooldown:1,
 	aliases: ['r'],
-	category: 'utility',
+	category: ':game_die: utility',
 	usage: '<dice dimension> <roll number>   \n<dice dimension> is how many sided dice you want (e.g. d20) \n <roll number> is the number of times you want to roll. It is set to 1 by default ',
 	execute(message, args) {
 		var num = 0

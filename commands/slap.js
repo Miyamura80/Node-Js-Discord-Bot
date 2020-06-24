@@ -10,7 +10,7 @@ module.exports = {
 	args: true,
 	aliases: ['hit','thwip'],
 	description: 'Hit another user',
-	category: 'fun',
+	category: ':partying_face: fun',
 	usage: '<@Person>      \n(Target Person)',
 	cooldown: 7,
 	execute(message, args,dev) {

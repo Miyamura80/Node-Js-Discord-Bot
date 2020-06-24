@@ -5,7 +5,7 @@ module.exports = {
 	description: 'Guess if a number is higher or lower',
 	cooldown:1,
 	aliases: ['hl'],
-	category: 'fun',
+	category: ':partying_face: fun',
 	usage: '<dice dimension> <roll number>   \n<dice dimension> is how many sided dice you want (e.g. d20) \n <roll number> is the number of times you want to roll. It is set to 1 by default ',
 	execute(message, args) {
 

@@ -3,33 +3,36 @@ const fs = require('fs');
 const {prefix, token} = require("./config.json");
 //require discord.js module
 const Discord = require('discord.js');
-const Sequelize = require('sequelize');
+const { Users, CurrencyShop } = require('./dbObjects');
+const { Op } = require('sequelize');
 const client = new Discord.Client();
 
 client.commands = new Discord.Collection();
 
-//DATABASES
-const sequelize = new Sequelize('database', 'user', 'password', {
-	host: 'localhost',
-	dialect: 'sqlite',
-	logging: false,
-	// SQLite only
-	storage: 'database.sqlite',
+
+//Currency
+const currency = new Discord.Collection();
+//Helper methods for currency 
+Reflect.defineProperty(currency, 'add', {
+	value: async function add(id, amount) {
+		const user = currency.get(id);
+		if (user) {
+			user.balance += Number(amount);
+			return user.save();
+		}
+		const newUser = await Users.create({ user_id: id, balance: amount });
+		currency.set(id, newUser);
+		return newUser;
+	},
 });
 
-const Tags = sequelize.define('tags', {
-	name: {
-		type: Sequelize.STRING,
-		unique: true,
-	},
-	description: Sequelize.TEXT,
-	username: Sequelize.STRING,
-	usage_count: {
-		type: Sequelize.INTEGER,
-		defaultValue: 0,
-		allowNull: false,
+Reflect.defineProperty(currency, 'getBalance', {
+	value: function getBalance(id) {
+		const user = currency.get(id);
+		return user ? user.balance : 0;
 	},
 });
+
 
 //Return all command file names in an array of string
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
@@ -45,7 +48,7 @@ var dev = null;
 
 //once logged in
 //once -> trigger once
-client.once('ready', () => {
+client.once('ready', async () => {
 	console.log('Ready!');
 	const devID = '270972813739819009'
 	client.user.setActivity(`with the world | ${prefix}help`, {
@@ -53,9 +56,10 @@ client.once('ready', () => {
 	});
 	dev = client.users.cache.get(devID)
 
-
-
-	Tags.sync();
+	//sync currency collection with database for easy access later
+	const storedBalances = await Users.findAll();
+	// const storedBalances = await Users.findAll()
+	storedBalances.forEach(b => currency.set(b.user_id, b));
 
 });
 
@@ -139,7 +143,7 @@ client.on('message', message => {
 
 	//Main command execution
 	try{
-		command.execute(message, args,dev,subjectMap, Tags);
+		command.execute(message, args,dev,subjectMap,currency);
 	}catch (error){
 		console.error(error);
 		message.reply('There was an error trying to execute that command!')

@@ -5,7 +5,7 @@ module.exports = {
 	name: 'botinfo',
 	aliases: ['bot_info','bot-info'],
 	description: 'Returns Bot Info',
-	category: 'info',
+	category: ':information_source: info',
 	cooldown: 2,
 	execute(message, args,dev) {
 		try{

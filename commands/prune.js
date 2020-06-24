@@ -2,7 +2,7 @@ module.exports = {
 	name: 'prune',
 	description: 'Deletes the last n messages.',
 	args: true,
-	category: 'moderation',
+	category: ':police_car: moderation',
 	usage: '<num>   \n<num> is number of latest messages to delete (does not delete messages older than 2 weeks)',
 	execute(message, args) {
 		const amount = parseInt(args[0])+1;
