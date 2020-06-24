@@ -15,7 +15,7 @@ module.exports = {
 		if (!items.length) return message.channel.send(`${target.tag} has nothing!`);
 		const inventoryEmbed = new Discord.MessageEmbed()
 					.setColor('#fc00fc')
-					.setAuthor(`${target.name}`, `${target.displayAvatarURL({ format: "png", dynamic: true })}`)
+					.setAuthor(`${target.username}`, `${target.displayAvatarURL({ format: "png", dynamic: true })}`)
 					.setDescription(`${items.map(i => `${i.amount} ${i.item.name}`).join(', ')}`)
 					.addField('In hand', `${currencyUnit} ${currency.getBalance(target.id)}`, false)
 		

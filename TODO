@@ -1,4 +1,5 @@
--Fix updatewiki so it works
--Add satus to the json for character
 -Include option to allow user to upload json through discord code embed feature
     >NECESSARY ATTRIBUTES: title, name (same as filename), "description", type
+
+ Refer to: https://discord.js.org/#/docs/main/stable/class/Permissions?scrollTo=s-FLAGS
+ for permissions

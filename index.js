@@ -6,6 +6,8 @@ const Discord = require('discord.js');
 const { Users, CurrencyShop } = require('./dbObjects');
 const { Op } = require('sequelize');
 const client = new Discord.Client();
+const nodeFlags = require('node-flag')
+
 
 client.commands = new Discord.Collection();
 
@@ -122,6 +124,15 @@ client.on('message', message => {
 		return message.channel.send(reply);
 	}
 
+	//If user doesn't have sufficient permissions
+	if(command.perms && !message.member.hasPermission(command.perms)){
+		return message.channel.send(`Insufficient permissions to do this. ${message.author}. Missing ${command.perms}`)
+	}
+
+	if(command.dmonly && !message.member.roles.cache.some(role => role.name === 'DM')){
+		return message.channel.send(`Insufficient permissions to do this. ${message.author}. Missing ${command.perms}`)
+	}
+
 	//If command not on cooldown
 	if(!cooldowns.has(command.name)){
 		cooldowns.set(command.name, new Discord.Collection());
@@ -146,7 +157,11 @@ client.on('message', message => {
 
 	//Main command execution
 	try{
-		command.execute(message, args,dev,subjectMap,currency);
+		if(nodeFlags.isset('log')){
+			const today = new Date();
+			console.log(`${message.author.username} executed ${prefix}${command.name} at ${today.getHours()}:${today.getMinutes()} in ${message.guild}`);
+		}
+		command.execute(message, args,dev,subjectMap,currency,client);
 	}catch (error){
 		console.error(error);
 		message.reply('There was an error trying to execute that command!')
