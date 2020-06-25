@@ -7,8 +7,13 @@ module.exports = {
 
 		if(!message.mentions.users.size){
 			const member = await message.guild.members.fetch({ query: commandArgs})
-			const user = member.first().user
-			return user
+			if(member.size){
+				const user = member.first().user
+				return user
+			}else{
+				console.log('Member not fo')
+				return null
+			}
 
 		}
 
