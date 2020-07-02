@@ -1,5 +1,7 @@
 **Node JS Discord Bot**
 
+This bot was designed with augmenting my own original campaign on dungeons and dragons, a tabletop role playing game.  
+
 Before you start, you must add a `config.json` file to the root directory, which may look something like the following:
 
 
