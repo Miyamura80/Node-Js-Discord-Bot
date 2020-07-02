@@ -2,6 +2,7 @@ module.exports = (sequelize, DataTypes) => {
 	return sequelize.define('users', {
 		char_id: {
 			type: DataTypes.STRING,
+			autoIncrement: true,
 			primaryKey: true,
 		},
 		char_name: {
@@ -34,6 +35,11 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 		},
 		max_hp: {
+			type: DataTypes.INTEGER,
+			defaultValue: 1,
+			allowNull: false,
+		},
+		current_hp: {
 			type: DataTypes.INTEGER,
 			defaultValue: 1,
 			allowNull: false,

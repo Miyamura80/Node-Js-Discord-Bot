@@ -1,0 +1,57 @@
+{
+	"title": "",
+
+	"name":"",
+	
+	"description": "",
+
+	"char_class" : "",
+
+	"char_background": "",
+
+	"char_race": "",
+
+	"char_alignment": "",
+
+	"level": 1,
+
+	"max_hp": 1,
+
+	"current_hp": 1,
+
+	"str":1,
+
+	"str_mod":1,
+
+	"dex":1,
+
+	"dex_mod":1,
+
+	"const":1,
+
+	"const_mod":1,
+
+	"intel":1,
+
+	"intel_mod":1,
+
+	"wis":1,
+
+	"wis_mod":1,
+
+	"charis":1,
+
+	"charis_mod":1,
+
+	"armor_class":1,
+
+	"initiative":1,
+
+	"prof_bonus":1,	
+
+	"speed":1,
+
+	"balance": 0,
+
+
+}

@@ -1,0 +1,26 @@
+{
+	"title": "Swiftness herb",
+
+	"name" : "swiftness_herb",
+	
+	"description": "A small herb, able to boost movement speed for 1 minute.",
+
+	"num_limit": 500,
+
+	"rating": "B",
+
+	"trivia": "Inspired by dark souls",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

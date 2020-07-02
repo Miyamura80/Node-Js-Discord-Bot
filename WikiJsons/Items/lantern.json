@@ -1,0 +1,26 @@
+{
+	"title": "Lantern",
+
+	"name" : "lantern",
+	
+	"description": "A small portable lantern, useful for lighting darkness ahead. Seems to be a standard necessity in this world.",
+
+	"num_limit": 500,
+
+	"rating": "C",
+
+	"trivia": "Inspired by Jojo's bizzare adventure part 4",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

@@ -1,0 +1,26 @@
+{
+	"title": "Gravity Bomb",
+
+	"name" : "gravity_bomb",
+	
+	"description": "A small throwable bomb, detonates on impact. Causes gravity of 2m radius of impact to increase tenfold. Seems to be a product of advanced research.",
+
+	"num_limit": 500,
+
+	"rating": "B",
+
+	"trivia": "Inspired by Jojo's bizzare adventure part 4",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

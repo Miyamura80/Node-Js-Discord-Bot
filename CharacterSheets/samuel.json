@@ -1,0 +1,57 @@
+{
+	"title": "Samuel Wilhelm von Braunburg",
+
+	"name":"samuel",
+	
+	"description": "A former noble, brash, and slightly arrogant",
+
+	"char_class" : "Fighter",
+
+	"char_background": "Noble",
+
+	"char_race": "Human",
+
+	"char_alignment": "LN",
+
+	"level": 5,
+
+	"max_hp": 39,
+
+	"current_hp": 39,
+
+	"str":16,
+
+	"str_mod":3,
+
+	"dex":16,
+
+	"dex_mod":3,
+
+	"const":13,
+
+	"const_mod":1,
+
+	"intel":11,
+
+	"intel_mod":0,
+
+	"wis":9,
+
+	"wis_mod":-1,
+
+	"charis":15,
+
+	"charis_mod":2,
+
+	"armor_class":11,
+
+	"initiative":0,
+
+	"prof_bonus":3,	
+
+	"speed":30,
+
+	"balance": 0,
+
+
+}

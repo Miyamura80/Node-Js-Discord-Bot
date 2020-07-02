@@ -1,0 +1,26 @@
+{
+	"title": "Light Bomb",
+
+	"name" : "light_bomb",
+	
+	"description": "A small throwable bomb, detonates on impact. Causes a flash of light of 30m radius, blinding everyone. Seems to be a product of divine powers, infusing the power of light.",
+
+	"num_limit": 500,
+
+	"rating": "B",
+
+	"trivia": "It's a flashbang",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

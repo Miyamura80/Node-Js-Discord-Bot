@@ -1,0 +1,26 @@
+{
+	"title": "Rope",
+
+	"name" : "rope",
+	
+	"description": "A long 50m rope, can be used for many things.",
+
+	"num_limit": 500,
+
+	"rating": "C",
+
+	"trivia": "It's a rope",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

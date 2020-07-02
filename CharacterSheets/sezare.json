@@ -1,0 +1,57 @@
+{
+	"title": "Sezare Érenn",
+
+	"name":"sezare",
+	
+	"description": "",
+
+	"char_class" : "Paladin",
+
+	"char_background": "Folk Hero",
+
+	"char_race": "Goliath",
+
+	"char_alignment": "Lawful Good",
+
+	"level": 5,
+
+	"max_hp": 46,
+
+	"current_hp": 30,
+
+	"str":18,
+
+	"str_mod":4,
+
+	"dex":14,
+
+	"dex_mod":2,
+
+	"const":18,
+
+	"const_mod":4,
+
+	"intel":10,
+
+	"intel_mod":0,
+
+	"wis":8,
+
+	"wis_mod":-1,
+
+	"charis":16,
+
+	"charis_mod":3,
+
+	"armor_class":18,
+
+	"initiative":0,
+
+	"prof_bonus":3,	
+
+	"speed":30,
+
+	"balance": 0,
+
+
+}

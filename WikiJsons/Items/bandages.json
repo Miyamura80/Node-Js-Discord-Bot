@@ -1,0 +1,26 @@
+{
+	"title": "Bandages",
+
+	"name" : "bandages",
+	
+	"description": "A small pack of bandages, useful for curing small wounds",
+
+	"num_limit": 500,
+
+	"rating": "B",
+
+	"trivia": "Not many interesting  things to say about a bandage",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.5,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 0.8,
+
+	"type": "Items"
+
+}

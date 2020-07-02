@@ -1,0 +1,57 @@
+{
+	"title": "Sildrarla Suncaller",
+
+	"name":"sildrarla",
+	
+	"description": "Shrewd and intelligence, Sildrarla moves from town to town, using her acting skills to gain pity from locals before robbing them. She often wears a white veil, showing only her piercing green eyes. Long dark brown hair and warm, medium toned skin. Tall, curvy, dressing extravagantly with the money she has been given/stolen.",
+	
+	"char_class" : "Bard",
+
+	"char_background": "entertainer",
+
+	"char_race": "Human/Damaran",
+
+	"char_alignment": "Neutral Evil",
+
+	"level": 5,
+
+	"max_hp": 33,
+
+	"current_hp": 33,
+
+	"str":14,
+
+	"str_mod":2,
+
+	"dex":15,
+
+	"dex_mod":2,
+
+	"const":14,
+
+	"const_mod":2,
+
+	"intel":11,
+
+	"intel_mod":0,
+
+	"wis":9,
+
+	"wis_mod":-1,
+
+	"charis":17,
+
+	"charis_mod":3,
+
+	"armor_class":13,
+
+	"initiative":3,
+
+	"prof_bonus":3,	
+
+	"speed":30,
+
+	"balance": 0,
+
+
+}

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-
+const fs = require('fs');
 const sequelize = new Sequelize('database', 'username', 'password', {
 	host: 'localhost',
 	dialect: 'sqlite',
@@ -8,6 +8,14 @@ const sequelize = new Sequelize('database', 'username', 'password', {
 });
 
 const CurrencyShop = sequelize.import('Database/models/CurrencyShop');
+const Characters = sequelize.import('Database/DND/Characters');
+const Items = sequelize.import('Database/DND/Items');
+const Shops = sequelize.import('Database/DND/Shops');
+
+
+sequelize.import('Database/DND/CharItems');
+sequelize.import('Database/DND/ShopListing');
+sequelize.import('Database/DND/SoulLink');
 sequelize.import('Database/models/Users');
 sequelize.import('Database/models/UserItems');
 
@@ -23,6 +31,95 @@ sequelize.sync({ force }).then(async () => {
 		CurrencyShop.upsert({ name: 'Cake', cost: 5 }),
 	];
 	await Promise.all(shop);
+
+
+	//Loading items into database
+	const igitem = [];
+	const jsonFiles3 = fs.readdirSync('./WikiJsons/'+'Items'+'/').filter(file => file.endsWith('.json'));
+	
+	for (const file of jsonFiles3){
+		const subjName = file.substring(0, file.length-5).toLowerCase()
+		try{
+			const subjContent = require('./WikiJsons/'+'Items'+'/'+file);
+			igitem.push(Items.upsert({ item_name: subjContent.name, 
+				item_title: subjContent.title,
+				description: subjContent.description,
+				num_limit: subjContent.num_limit,
+				rating: subjContent.rating,
+				trivia: subjContent.trivia,
+				col_value: subjContent.col_value,
+				sc_value: subjContent.sc_value,
+				woth_value: subjContent.woth_value,
+				cotm_value: subjContent.cotm_value
+			}));
+		}catch(error){
+			console.log(error)
+		}
+	}
+	await Promise.all(igitem)
+
+	//Loading shops into database
+	const igshop = [];
+	const jsonFiles = fs.readdirSync('./WikiJsons/'+'Shops'+'/').filter(file => file.endsWith('.json'));
+	
+	for (const file of jsonFiles){
+		const subjName = file.substring(0, file.length-5).toLowerCase()
+		try{
+			const subjContent = require('./WikiJsons/'+'Shops'+'/'+file);
+			igshop.push(Shops.upsert({ shop_name: subjContent.name, 
+				shop_title: subjContent.title,
+				description: subjContent.description,
+				location: subjContent.location,
+				allegiance: subjContent.allegiance,
+				owner: subjContent.owner
+			}));
+		}catch(error){
+			console.log(error)
+		}
+	}
+	await Promise.all(igshop)
+
+	//Loading shops into database
+	const igchar = [];
+	const jsonFiles2 = fs.readdirSync('./CharacterSheets/').filter(file => file.endsWith('.json'));
+	
+	for (const file of jsonFiles2){
+		const subjName = file.substring(0, file.length-5).toLowerCase()
+		try{
+			const subjContent = require('./CharacterSheets/'+file);
+			igchar.push(Characters.upsert({ char_name: subjContent.name, 
+				char_title: subjContent.title,
+				char_class: subjContent.char_class,
+				char_background: subjContent.char_background ,
+				char_race: subjContent.char_race ,
+				char_alignment: subjContent.char_alignment ,
+				level: subjContent.level ,
+				max_hp: subjContent.max_hp ,
+				current_hp: subjContent.current_hp ,
+				str: subjContent.str ,
+				str_mod: subjContent.str_mod ,
+				dex: subjContent.dex ,
+				dex_mod: subjContent.dex_mod ,
+				const: subjContent.const ,
+				const_mod: subjContent.const_mod ,
+				intel: subjContent.intel ,
+				intel_mod: subjContent.intel_mod ,
+				wis: subjContent.wis ,
+				wis_mod: subjContent.wis_mod ,
+				charis: subjContent.charis ,
+				charis_mod: subjContent.charis_mod ,
+				armor_class: subjContent.armor_class ,
+				initiative: subjContent.initiative ,
+				prof_bonus: subjContent.prof_bonus ,
+				speed: subjContent.speed ,
+				balance: 0
+			}));
+		}catch(error){
+			console.log(error)
+		}
+	}
+	await Promise.all(igchar)
+
 	console.log('Database synced');
 	sequelize.close();
 }).catch(console.error);

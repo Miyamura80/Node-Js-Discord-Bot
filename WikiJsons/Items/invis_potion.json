@@ -1,0 +1,26 @@
+{
+	"title": "Potion of Invisibility",
+
+	"name" : "invis_potion",
+	
+	"description": "A small vial containing liquid which when drank, causes consumer to become invisible for 1 minute.",
+
+	"num_limit": 500,
+
+	"rating": "A",
+
+	"trivia": "Inspired (ripped off) by Minecraft",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

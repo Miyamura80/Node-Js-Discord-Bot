@@ -1,0 +1,16 @@
+{
+	"title": "Dray's Utility Store",
+
+	"name" : "glimmerdrift_utility",
+	
+	"description": "People betray you, but items will be loyal till the end... Come see what I have",
+
+	"allegiance": "Neutral",
+
+	"location": "Glimmerdrift",
+
+	"owner": "dray",
+
+	"type": "Shops"
+
+}

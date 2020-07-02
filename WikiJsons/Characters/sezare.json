@@ -1,0 +1,26 @@
+{
+	"title": "Sezare Érenn",
+
+	"name":"sezare",
+	
+	"description": "",
+	
+	"combat": "Weapon Proficiencies: Simple; Martial;\n Armor Proficiencies: Light; Medium; Heavy; Shields;",
+	
+	"allegiance" : "Currently allied with none, but gaining affection for the party.",
+
+	"origin": "After losing his son and wife to a flock of Grell, Sezare took an oath to watch for extraplanar beings and to bring them down. Missing his son, he tends to attach his affections to those close to him.",
+
+	"charRelationships" : "",
+
+	"hyperlinks": [],
+
+	"trivia" : "None Known",
+
+	"type": "Characters",
+
+	"lastSeen": "Glimmerdrift",
+
+	"aliases": ["evan"]
+
+}
