@@ -13,6 +13,7 @@ const Items = sequelize.import('Database/DND/Items');
 const Shops = sequelize.import('Database/DND/Shops');
 
 
+
 sequelize.import('Database/DND/CharItems');
 sequelize.import('Database/DND/ShopListing');
 sequelize.import('Database/DND/SoulLink');
@@ -32,13 +33,12 @@ sequelize.sync({ force }).then(async () => {
 	];
 	await Promise.all(shop);
 
-
+	
 	//Loading items into database
 	const igitem = [];
 	const jsonFiles3 = fs.readdirSync('./WikiJsons/'+'Items'+'/').filter(file => file.endsWith('.json'));
 	
 	for (const file of jsonFiles3){
-		const subjName = file.substring(0, file.length-5).toLowerCase()
 		try{
 			const subjContent = require('./WikiJsons/'+'Items'+'/'+file);
 			igitem.push(Items.upsert({ item_name: subjContent.name, 
@@ -63,7 +63,6 @@ sequelize.sync({ force }).then(async () => {
 	const jsonFiles = fs.readdirSync('./WikiJsons/'+'Shops'+'/').filter(file => file.endsWith('.json'));
 	
 	for (const file of jsonFiles){
-		const subjName = file.substring(0, file.length-5).toLowerCase()
 		try{
 			const subjContent = require('./WikiJsons/'+'Shops'+'/'+file);
 			igshop.push(Shops.upsert({ shop_name: subjContent.name, 
@@ -71,7 +70,8 @@ sequelize.sync({ force }).then(async () => {
 				description: subjContent.description,
 				location: subjContent.location,
 				allegiance: subjContent.allegiance,
-				owner: subjContent.owner
+				owner: subjContent.owner,
+				campaign: 'spiral'
 			}));
 		}catch(error){
 			console.log(error)
@@ -84,7 +84,6 @@ sequelize.sync({ force }).then(async () => {
 	const jsonFiles2 = fs.readdirSync('./CharacterSheets/').filter(file => file.endsWith('.json'));
 	
 	for (const file of jsonFiles2){
-		const subjName = file.substring(0, file.length-5).toLowerCase()
 		try{
 			const subjContent = require('./CharacterSheets/'+file);
 			igchar.push(Characters.upsert({ char_name: subjContent.name, 

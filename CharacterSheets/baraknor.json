@@ -1,0 +1,57 @@
+{
+	"title": "Baraknor Obamaran",
+
+	"name":"baraknor",
+	
+	"description": "Cheeky little elf with I think is pretty stealthy and has a longbow. Medium height with long brown hair.",
+
+	"char_class" : "Ranger",
+
+	"char_background": "Acolyte",
+
+	"char_race": "Half Elf",
+
+	"char_alignment": "Chaotic Good",
+
+	"level": 5,
+
+	"max_hp": 44,
+
+	"current_hp": 44,
+
+	"str":11,
+
+	"str_mod":0,
+
+	"dex":17,
+
+	"dex_mod":3,
+
+	"const":15,
+
+	"const_mod":2,
+
+	"intel":12,
+
+	"intel_mod":1,
+
+	"wis":13,
+
+	"wis_mod":1,
+
+	"charis":10,
+
+	"charis_mod":0,
+
+	"armor_class":15,
+
+	"initiative":3,
+
+	"prof_bonus":3,	
+
+	"speed":30,
+
+	"balance": 0
+
+
+}

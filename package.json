@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Miyamura80/Node-Js-Discord-Bot#readme",
   "dependencies": {
+    "@keyv/redis": "^2.1.2",
     "discord.js": "^12.2.0",
     "eslint": "^7.3.0",
     "keyv": "^4.0.1",

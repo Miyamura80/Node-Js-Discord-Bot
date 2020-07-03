@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
-	return sequelize.define('users', {
+	return sequelize.define('shops', {
 		shop_id: {
-			type: DataTypes.STRING,
+			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true,
 		},
@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
 		owner: {
 			type: DataTypes.STRING,
 			allowNull: true,
+		},
+		campaign: {
+			type: DataTypes.STRING,
+			allowNull: false,
 		}
 
 	}, {

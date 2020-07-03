@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
-	return sequelize.define('users', {
+	return sequelize.define('items', {
 		item_id: {
-			type: DataTypes.STRING,
+			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true,
 		},
@@ -32,24 +32,24 @@ module.exports = (sequelize, DataTypes) => {
 		col_value: {
 			type: DataTypes.FLOAT,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		sc_value: {
 			type: DataTypes.FLOAT,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		woth_value: {
 			type: DataTypes.FLOAT,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		cotm_value: {
 			type: DataTypes.FLOAT,
 			defaultValue: 1,
-			allowNull: false,
+			allowNull: true,
 		}
-
+		
 	}, {
 		timestamps: false,
 	});

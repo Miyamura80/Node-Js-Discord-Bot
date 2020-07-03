@@ -1,0 +1,57 @@
+{
+	"title": "Elin Jaeger",
+
+	"name":"Elin",
+	
+	"description": "Elin is mostly solitary in nature, mostly trying to help others (even if their 'help' seems rather radical at times). They don't cut the most imposing figure, but people generally just seem to like Elin and want to help them when they can.",
+
+	"char_class" : "Cleric",
+
+	"char_background": "town healer",
+
+	"char_race": "Half-Elf",
+
+	"char_alignment": "Chaotic Good",
+
+	"level": 5,
+
+	"max_hp": 29,
+
+	"current_hp": 29,
+
+	"str":10,
+
+	"str_mod":0,
+
+	"dex":10,
+
+	"dex_mod":0,
+
+	"const":10,
+
+	"const_mod":0,
+
+	"intel":15,
+
+	"intel_mod":2,
+
+	"wis":15,
+
+	"wis_mod":2,
+
+	"charis":15,
+
+	"charis_mod":2,
+
+	"armor_class":13,
+
+	"initiative":0,
+
+	"prof_bonus":3,	
+
+	"speed":30,
+
+	"balance": 0
+
+
+}

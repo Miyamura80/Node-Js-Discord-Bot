@@ -1,0 +1,57 @@
+{
+	"title": "Ebisu",
+
+	"name":"ebisu",
+	
+	"description": "Sneaky sorceress, that made her living off selling magic powder and turning people into lizards",
+
+	"char_class" : "Sorcerer - Lizard Magic",
+
+	"char_background": "Powder Dealer",
+
+	"char_race": "Human - Magic User",
+
+	"char_alignment": "Chaotic Neutral",
+
+	"level": 5,
+
+	"max_hp": 20,
+
+	"current_hp": 1,
+
+	"str":14,
+
+	"str_mod":2,
+
+	"dex":15,
+
+	"dex_mod":2,
+
+	"const":12,
+
+	"const_mod":1,
+
+	"intel":15,
+
+	"intel_mod":2,
+
+	"wis":12,
+
+	"wis_mod":1,
+
+	"charis":10,
+
+	"charis_mod":0,
+
+	"armor_class":12,
+
+	"initiative":2,
+
+	"prof_bonus":3,	
+
+	"speed":30,
+
+	"balance": 0
+
+
+}

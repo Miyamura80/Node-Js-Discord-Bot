@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
-	return sequelize.define('user_item', {
-		shop_id: DataTypes.STRING,
-		item_id: DataTypes.STRING,
+	return sequelize.define('shop_listing', {
+		shop_id: DataTypes.INTEGER,
+		item_id: DataTypes.INTEGER,
 		amount: {
 			type: DataTypes.INTEGER,
 			allowNull: false,

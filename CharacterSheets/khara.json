@@ -1,0 +1,57 @@
+{
+	"title": "Tomirkhun Khara",
+
+	"name":"khara",
+	
+	"description": "A tall and lean form draped from head to toe in loose cloth, this wandering chef hides their face from all but their most trusted allies. A worn satchel carries a variety of enchanting and mysterious spices.",
+	
+	"char_class" : "Bard",
+
+	"char_background": "Nomad Chef",
+
+	"char_race": "Tiefling-Orc crossbreed (hidden to characters unless revealed)",
+
+	"char_alignment": "Chaotic Neutral",
+
+	"level": 5,
+
+	"max_hp": 28,
+
+	"current_hp": 28,
+
+	"str":12,
+
+	"str_mod":1,
+
+	"dex":15,
+
+	"dex_mod":2,
+
+	"const":14,
+
+	"const_mod":0,
+
+	"intel":9,
+
+	"intel_mod":-1,
+
+	"wis":9,
+
+	"wis_mod":-1,
+
+	"charis":16,
+
+	"charis_mod":3,
+
+	"armor_class":13,
+
+	"initiative":3,
+
+	"prof_bonus":5,	
+
+	"speed":30,
+
+	"balance": 0
+
+
+}

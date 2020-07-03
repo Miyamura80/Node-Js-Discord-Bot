@@ -1,13 +1,19 @@
 const fs = require('fs');
 //Node's native file system module
-const {prefix, token} = require("./config.json");
+const {prefix, token, defaultCampaign} = require("./config.json");
 //require discord.js module
 const Discord = require('discord.js');
-const { Users, CurrencyShop } = require('./dbObjects');
+const { Users, CurrencyShop, UserItems,
+	SoulLink, Characters, CharItems, Shops, ShopListing, Items} = require('./dbObjects');
 const { Op } = require('sequelize');
 const client = new Discord.Client();
 const nodeFlags = require('node-flag')
 
+const Keyv = require('keyv');
+
+// const campaignskeyv = new Keyv('redis://user:pass@localhost:6379');
+const campaignskeyv = new Keyv();
+campaignskeyv.on('error', err => console.error('Keyv conection error: ',err));
 
 client.commands = new Discord.Collection();
 
@@ -62,32 +68,34 @@ client.once('ready', async () => {
 	const storedBalances = await Users.findAll();
 	// const storedBalances = await Users.findAll()
 	storedBalances.forEach(b => currency.set(b.user_id, b));
-
 });
 
 
 //LOADING FILES
-const categories = ["Characters", "Groups", "Items", "Locations", "Concepts"]
 const subjectMap = new Discord.Collection();
 
-for(const categ of categories){
-	console.log("------------------------------------------------");
-	console.log("Loading: "+categ);
-	const jsonFiles = fs.readdirSync('./WikiJsons/'+categ+'/').filter(file => file.endsWith('.json'));
-	
-	for (const file of jsonFiles){
-		const subjName = file.substring(0, file.length-5).toLowerCase()
-		console.log("Loaded Wiki for: "+subjName);
-		try{
-			const subjContent = require('./WikiJsons/'+categ+'/'+file);
-			subjectMap.set(subjName, subjContent);
-		}catch(error){
-			console.log(error)
+const campaignWikis = fs.readdirSync('./WikiJsons/');
+for(const campaign of campaignWikis){
+	const categories = fs.readdirSync('./WikiJsons/'+campaign);
+
+	for(const categ of categories){
+		console.log("------------------------------------------------");
+		console.log("Loading: "+categ);
+		const jsonFiles = fs.readdirSync('./WikiJsons/'+campaign+'/'+categ+'/').filter(file => file.endsWith('.json'));
+		
+		for (const file of jsonFiles){
+			const subjName = file.substring(0, file.length-5).toLowerCase()
+			console.log("Loaded Wiki for: "+subjName);
+			try{
+				const subjContent = require('./WikiJsons/'+campaign+'/'+categ+'/'+file);
+				subjectMap.set(subjName, subjContent);
+			}catch(error){
+				console.log(error)
+			}
 		}
 	}
+
 }
-
-
 
 
 
@@ -95,6 +103,7 @@ for(const categ of categories){
 //MAIN SEQUENCE
 //on -> trigger multiple times
 client.on('message', message => {
+
 	if(!message.author.bot){
 		currency.add(message.author.id, 1);
 	}
@@ -155,13 +164,19 @@ client.on('message', message => {
 	}
 
 
+	//Right before execution
+	if(!campaignskeyv.get(message.guild.id)){
+		campaignskeyv.set(message.guild.id, defaultCampaign);
+	}
+
+
 	//Main command execution
 	try{
 		if(nodeFlags.isset('log')){
 			const today = new Date();
-			console.log(`${message.author.username} executed ${prefix}${command.name} at ${today.getHours()}:${today.getMinutes()} in ${message.guild}`);
+			console.log(`${message.author.username} executed ${prefix}${command.name} ${args} @ ${today.getHours()}:${today.getMinutes()} in ${message.guild}`);
 		}
-		command.execute(message, args,dev,subjectMap,currency,client);
+		command.execute(message, args,dev,subjectMap,currency,client,campaignskeyv);
 	}catch (error){
 		console.error(error);
 		message.reply('There was an error trying to execute that command!')
