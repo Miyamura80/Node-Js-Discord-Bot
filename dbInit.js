@@ -36,11 +36,11 @@ sequelize.sync({ force }).then(async () => {
 	
 	//Loading items into database
 	const igitem = [];
-	const jsonFiles3 = fs.readdirSync('./WikiJsons/'+'Items'+'/').filter(file => file.endsWith('.json'));
+	const jsonFiles3 = fs.readdirSync('./WikiJsons/spiral/'+'Items'+'/').filter(file => file.endsWith('.json'));
 	
 	for (const file of jsonFiles3){
 		try{
-			const subjContent = require('./WikiJsons/'+'Items'+'/'+file);
+			const subjContent = require('./WikiJsons/spiral/'+'Items'+'/'+file);
 			igitem.push(Items.upsert({ item_name: subjContent.name, 
 				item_title: subjContent.title,
 				description: subjContent.description,
@@ -60,11 +60,11 @@ sequelize.sync({ force }).then(async () => {
 
 	//Loading shops into database
 	const igshop = [];
-	const jsonFiles = fs.readdirSync('./WikiJsons/'+'Shops'+'/').filter(file => file.endsWith('.json'));
+	const jsonFiles = fs.readdirSync('./WikiJsons/spiral/'+'Shops'+'/').filter(file => file.endsWith('.json'));
 	
 	for (const file of jsonFiles){
 		try{
-			const subjContent = require('./WikiJsons/'+'Shops'+'/'+file);
+			const subjContent = require('./WikiJsons/spiral/'+'Shops'+'/'+file);
 			igshop.push(Shops.upsert({ shop_name: subjContent.name, 
 				shop_title: subjContent.title,
 				description: subjContent.description,

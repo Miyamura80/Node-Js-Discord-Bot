@@ -129,6 +129,15 @@ module.exports = (sequelize, DataTypes) => {
 			defaultValue: 0,
 			allowNull: false,
 		},
+		party: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		},
+		religion: {
+			type: DataTypes.STRING,
+			allowNull: true,
+		}
+
 
 	}, {
 		timestamps: false,
