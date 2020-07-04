@@ -113,7 +113,7 @@ client.on('message', async message => {
 	//Right before execution
 	if(!currentCamp){
 		campaignskeyv.set(message.guild.id, defaultCampaign);
-		console.log("boooo");
+		message.channel.send(`Initial server setting loaded. If your command did not work, please try again.`);
 	}
 
 	if(!message.author.bot){

@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 	return sequelize.define('soul_link', {
-		user_id: DataTypes.INTEGER,
+		user_id: DataTypes.STRING,
 		char_id: DataTypes.INTEGER,
 		campaign: {
 			type: DataTypes.STRING,
