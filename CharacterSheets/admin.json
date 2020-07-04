@@ -1,0 +1,57 @@
+{
+	"title": "Administrator",
+
+	"name":"admin",
+	
+	"description": "Big god",
+
+	"char_class" : "Every class",
+
+	"char_background": "God",
+
+	"char_race": "Every Race",
+
+	"char_alignment": "True Neutral",
+
+	"level": 99,
+
+	"max_hp": 999,
+
+	"current_hp": 500,
+
+	"str":99,
+
+	"str_mod":99,
+
+	"dex":99,
+
+	"dex_mod":99,
+
+	"const":99,
+
+	"const_mod":99,
+
+	"intel":99,
+
+	"intel_mod":99,
+
+	"wis":99,
+
+	"wis_mod":99,
+
+	"charis":99,
+
+	"charis_mod":99,
+
+	"armor_class":99,
+
+	"initiative":99,
+
+	"prof_bonus":99,	
+
+	"speed":99,
+
+	"balance": 9999
+
+
+}
