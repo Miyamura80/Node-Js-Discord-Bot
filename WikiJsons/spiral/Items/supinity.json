@@ -1,0 +1,26 @@
+{
+	"title": "Supinity-The sin of the Man",
+
+	"name" : "supinity",
+	
+	"description": "A legendary dagger, with a tint of 7 colours constantly glowing, enveloping the dagger. The colour of the aura changes based on the psychological state of the wielder. Erases the existence of the wielder from the interacteble world while held with both hands.",
+
+	"num_limit": 1,
+
+	"rating": "X",
+
+	"trivia": "The 7 colours represent the 7 deadly sins",
+
+	"allegiance": "Unknown",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.5,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 0.8,
+
+	"type": "Items"
+
+}

@@ -72,10 +72,14 @@ client.once('ready', async () => {
 
 
 //LOADING FILES
-const subjectMap = new Discord.Collection();
+const campaignWikiMap = new Discord.Collection();
+
 
 const campaignWikis = fs.readdirSync('./WikiJsons/');
 for(const campaign of campaignWikis){
+
+	const subjectMap = new Discord.Collection();
+
 	const categories = fs.readdirSync('./WikiJsons/'+campaign);
 
 	for(const categ of categories){
@@ -95,14 +99,22 @@ for(const campaign of campaignWikis){
 		}
 	}
 
-}
+	campaignWikiMap.set(campaign, subjectMap);
 
+}
 
 
 
 //MAIN SEQUENCE
 //on -> trigger multiple times
-client.on('message', message => {
+client.on('message', async message => {
+
+	const currentCamp = await campaignskeyv.get(message.guild.id)
+	//Right before execution
+	if(!currentCamp){
+		campaignskeyv.set(message.guild.id, defaultCampaign);
+		console.log("boooo");
+	}
 
 	if(!message.author.bot){
 		currency.add(message.author.id, 1);
@@ -164,11 +176,6 @@ client.on('message', message => {
 	}
 
 
-	//Right before execution
-	if(!campaignskeyv.get(message.guild.id)){
-		campaignskeyv.set(message.guild.id, defaultCampaign);
-	}
-
 
 	//Main command execution
 	try{
@@ -176,7 +183,7 @@ client.on('message', message => {
 			const today = new Date();
 			console.log(`${message.author.username} executed ${prefix}${command.name} ${args} @ ${today.getHours()}:${today.getMinutes()} in ${message.guild}`);
 		}
-		command.execute(message, args,dev,subjectMap,currency,client,campaignskeyv);
+		command.execute(message, args,dev,campaignWikiMap,currency,client,campaignskeyv);
 	}catch (error){
 		console.error(error);
 		message.reply('There was an error trying to execute that command!')

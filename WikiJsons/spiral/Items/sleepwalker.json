@@ -1,0 +1,26 @@
+{
+	"title": "Sleepwalker-The sin of the Lion",
+
+	"name" : "sleepwalker",
+	
+	"description": "A large unstable silver scythe, able to sever any physical objects, while maintaining their connection along the cut.",
+
+	"num_limit": 1,
+
+	"rating": "X",
+
+	"trivia": "Inspired vaguely by Sophie's world.",
+
+	"allegiance": "Unknown",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

@@ -1,0 +1,26 @@
+{
+	"title": "Anscoul the decietful",
+
+	"name":"anscoul",
+	
+	"description": "Decietful and selfish, he is one of the scholars of the towers [1], admitted on his world-bending scams. He is a true neutral despite his allegiance, and has no pride. Seemingly with only monetary gains in mind, he lives on his own terms, distant from anyone. But he is honest about his dishonesty, making him consistent yet unpredictable, with his catchphrase \"Maybe\".",
+	
+	"combat": "Anscoul has close to no combat skills, and is only able to cast illusionary spells used for his scams. He navigates conflict with his mastery of decietful words.",
+	
+	"allegiance" : "Children of the timeless mind",
+
+	"origin": "Unknown",
+
+	"charRelationships" : "-Said to Sildrarla [2] that he has had the exact same conversation 4 years ago, hinting at some connection\n -Made contact with grayroach the thief, though details are unknown [3]",
+
+	"hyperlinks": ["scholars", "sildrarla" ,"grayroach"],
+
+	"trivia" : "Inspired by Kaiki from the monogatari series",
+
+	"type": "Characters",
+
+	"lastSeen": "Glimmerdrift",
+
+	"aliases": ["decietful", "scammer"]
+
+}

@@ -10,7 +10,7 @@ module.exports = {
 	usage: '<name>   \n<name> is the name of campaign you want to play',
 	aliases: ['set_campaign'],
 	category: ':mage: DM exclusive',
-	async execute(message, args,dev,subjectMap,currency,client, campaignskeyv) {
+	async execute(message, args,dev,campaignWikiMap,currency,client, campaignskeyv) {
 
 		const input = message.content.slice(prefix.length).trim();
 		const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);

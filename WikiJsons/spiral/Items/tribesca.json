@@ -1,0 +1,26 @@
+{
+	"title": "Tribesca-The sin of the Eagle",
+
+	"name" : "tribesca",
+	
+	"description": "A legendary Y-shaped spear, with golden-colored blades curving down on both ends of the branch. Modelled after the talons of an eagle, with the middle talon/finger ripped off. Only wielders of ultimate strength can wield this legendary spear.",
+
+	"num_limit": 1,
+
+	"rating": "X",
+
+	"trivia": "It's a claw on a stick",
+
+	"allegiance": "Communion of Light",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.5,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 0.8,
+
+	"type": "Items"
+
+}

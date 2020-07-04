@@ -1,10 +1,6 @@
-const {prefix} = require('../config.json');
+const {prefix, defaultCampaign} = require('../config.json');
 const Discord = require('discord.js');
 const fs = require('fs');
-
-
-
-
 
 module.exports = {
 	name: 'wiki',
@@ -13,20 +9,34 @@ module.exports = {
 	category: ':game_die: utility',
 	usage: '<keyword> \nWhere keyword is the subject in question to search',
 	cooldown: 1,
-	execute(message, args, dev, subjectMap) {
+	async execute(message, args,dev,campaignWikiMap,currency,client, campaignskeyv) {
 		const {commands} = message.client;
 		const devUrl = dev.displayAvatarURL({ format: "png", dynamic: true })
 
 		if(!args.length){
 			
+            let cmpName;
+            const cpnNow = await campaignskeyv.get(message.guild.id)
+            if(cpnNow){
+                cmpName = cpnNow
+            }else{
+                cmpName = defaultCampaign
+            }
+
+            //Short for current campaign content 
+            const ccc = require('../campaigns/'+cmpName+'.json')
+			
 			const subjLists = new Discord.MessageEmbed()
 				.setColor('#fc00fc')
-				.setTitle('Spiral of Dietheld Wiki')
+				.setTitle(`${ccc.title} Wiki`)
 				.setAuthor('Spiral Bot', 'https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/botProfilePic.png', 'https://github.com/Miyamura80/Node-Js-Discord-Bot')
 				.setDescription(`You can search information about the following by: \`${prefix}wiki [search term]\` `)
 				.setFooter('Please help improving this wiki by messaging Eimi for any errors, typos, corrections', devUrl);
 
 			const categories = ["Characters", "Groups", "Items", "Locations", "Concepts"];
+			const currentCampaign = await campaignskeyv.get(message.guild.id)
+			console.log(currentCampaign);
+			const subjectMap = campaignWikiMap.get(currentCampaign);
 			for(const categ of categories){
 				var categList = "None";
 				for(const m of subjectMap){

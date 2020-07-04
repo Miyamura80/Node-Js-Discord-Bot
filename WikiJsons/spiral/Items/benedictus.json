@@ -1,0 +1,26 @@
+{
+	"title": "Benedictus-The sin of the Bull",
+
+	"name" : "benedictus",
+	
+	"description": "A legendary assymetric bow, formed from a single horn of an ox. Legends say, that shots from this bow has some unexplainable effects.",
+
+	"num_limit": 1,
+
+	"rating": "X",
+
+	"trivia": "Tbh, just leaving myself room for change with the vagueness.",
+
+	"allegiance": "Unknown",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

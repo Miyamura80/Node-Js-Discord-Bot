@@ -1,0 +1,26 @@
+{
+	"title": "Jeremy the champion",
+
+	"name":"jeremy",
+	
+	"description": "A tall, bright young man, often seen wearing golden armor with a large red cape, resembling a bird-like figure. He sets out his ambitions confidently, of replacing Tybalt [1] to become the new ruler of Pearlford [2]. He exudes a presence of a unstoppable bullet, drawing people into his band of knights. He is one of the 4 Grand Rings [3]",
+	
+	"combat": "Ability-Obtainyd: Once Jeremy observes someone fight, Jeremy can simulate their combat capabilities, range, application, weakness in his head for 30 minutes in parallel to his normal function, giving him near perfect strategy to any opponent at the end of the simulation. Jeremy fights with his legendary spear Tribesca [4], used defensively during the simulation, and offensively after he gains a strategy. He often leads his troops to battle, using his simulation ability to gain a stronger understanding of unit positioning.",
+	
+	"allegiance" : "Communion of light",
+
+	"origin": "Glimmerdrift",
+
+	"charRelationships" : "-Unknown complicated relationship with quinn [5] and theffania [6] \n -dislike towards goce of the rain [7]",
+
+	"hyperlinks": ["tybalt", "pearlford" ,"tribesca", "quinn", "theffania", "goce"],
+
+	"trivia" : "Inspired aesthetically by Ikki from Saint Seiya and Rider from fate/zero",
+
+	"type": "Characters",
+
+	"lastSeen": "Glimmerdrift",
+
+	"aliases": ["jeremy", "champion"]
+
+}
