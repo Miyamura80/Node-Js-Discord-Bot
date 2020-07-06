@@ -7,45 +7,36 @@ const fs = require('fs');
 const {prefix,currencyUnit} = require("../config.json")
 module.exports = {
 	name: 'assignshopitem',
-	description: 'Assign a user to a given character',
+	description: 'Assign an item to a given shop',
 	args: true,
 	dmonly: true,
-	usage: '<user> <name>   \n<user> is the discord user to be assigned the character \n<name> is the name of character to assign to specified user',
-	aliases: ['assign_character'],
+	usage: '<shopName> <itemName> <amount>  \n<shopName> is the name of shop to be assigned the item \n<itemName> is the name of item to assign to specified shop \n <amount> is the stock of the shop. Set to infinite unless this is specified',
+	aliases: ['assign_character','xasi'],
 	category: ':mage: DM exclusive',
 	async execute(message, args,dev,campaignWikiMap,currency,client, campaignskeyv) {
 
-		const input = message.content.slice(prefix.length).trim();
-		const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
 		const cpnNow = await campaignskeyv.get(message.guild.id)
 
-		const itemName = commandArgs.split(/ +/g).slice(-1)[0];
-		const shopName = commandArgs.split(/ +/g).slice(0,-1).join(' ');
+		const itemName = args[1];
+		const shopName = args[0];
 
-		//find user, if not found return
+		const infinite = args[2] ? false : true;
+		const amount = args[2] ? args[2] : 80; 
+
+		//find shop, if not found return
 		const shopDB = await Shops.findOne({ where: { shop_name: { [Op.like]: shopName } } });
 		if(!shopDB) return message.channel.send(`Sorry ${message.author}, that's an invalid shop name.`);
 
-		//find character, if not found return
+		//find item, if not found return
 		const itemDB = await Items.findOne({ where: { item_name: { [Op.like]: itemName } } });
 		if (!itemDB) return message.channel.send(`Sorry ${message.author}, that's an invalid item name.`);
 
 		
-		ShopListing.create({ user_id: transferTarget.id, balance: 0});
+		await shopDB.setItem(itemDB, amount, infinite);
+
+		const printStr = infinite ? '' : `with ${amount}`
 		
-		//find shop-item pairing, to check for conflicts
-		const itemListing = await ShopListing.findOne({ where: { shop_id: shopDB.shop_id, item_id: itemDB.item_id } });
-		if(!itemListing){
-			const userFind = await Users.findOne({where: {user_id: transferTarget.id}});
-			if(!userFind){
-				Users.create({ user_id: transferTarget.id, balance: 0});
-			}
-			const user = await Users.findOne({where: {user_id: transferTarget.id}});
-			await user.assignCharacter(character, cpnNow);
-			return message.channel.send(`Assigned __**${character.char_name}**__ to __**${transferTarget.username}**__ in campaign __**${cpnNow}**__`);
-		}
-		
-		return message.channel.send(`You already have a character __**${character.char_name}**__ to a discord user with ID __**${soulLinkForChar.user_id}**__ in campaign:  __**${cpnNow}**__`);
+		return message.channel.send(`Successfully set __**${itemName}**__ to __**${shopName}**__ with infinite set to \`${infinite}\` ${printStr}`);
 
 
 	},

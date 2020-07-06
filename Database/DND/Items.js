@@ -3,11 +3,11 @@ module.exports = (sequelize, DataTypes) => {
 		item_id: {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
-			autoIncrement: true,
 		},
 		item_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
+			unique: true,
 		},
 		item_title: {
 			type: DataTypes.STRING,

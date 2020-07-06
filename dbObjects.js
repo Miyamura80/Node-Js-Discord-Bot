@@ -50,22 +50,39 @@ Users.prototype.getCharacter = function(campaignName) {
 
 
 //Shop-item interaction
-Shops.prototype.addItem = async function(item) {
-	const shopItem = await UserItems.findOne({
-		where: { shop_id: this.shop_id, item_id: item.id },
+const ratingPrice = {
+	'D': 1,
+	'C': 5,
+	'B': 20,
+	'A': 50,
+	'S': 100,
+	'SS': 500,
+	'SSS': 1000
+}
+
+Shops.prototype.addItem = async function(item, amt, infinite) {
+	const shopItem = await ShopListing.findOne({
+		where: { shop_id: this.shop_id, item_id: item.item_id },
 	});
 
 	if (shopItem) {
-		shopItem.amount += 1;
+		if(shopItem.infinite){
+			return
+		}
+		shopItem.amount += amt;
 		return shopItem.save();
 	}
 
-	return CharItems.create({ shop_id: this.shop_id, item_id: item.id, amount: 1 });
+	if(amt <= 0){
+		return
+	}
+
+	return ShopListing.create({ shop_id: this.shop_id, item_id: item.item_id, amount: amt , infinite: infinite, price: ratingPrice[item.rating]});
 };
 
-Shops.prototype.setItem = async function(item, amount) {
-	const shopItem = await UserItems.findOne({
-		where: { shop_id: this.shop_id, item_id: item.id },
+Shops.prototype.setItem = async function(item, amount, infinite) {
+	const shopItem = await ShopListing.findOne({
+		where: { shop_id: this.shop_id, item_id: item.item_id },
 	});
 
 	if (shopItem) {
@@ -73,13 +90,12 @@ Shops.prototype.setItem = async function(item, amount) {
 		return shopItem.save();
 	}
 
-	return CharItems.create({ shop_id: this.shop_id, item_id: item.id, amount: amount });
+	return ShopListing.create({ shop_id: this.shop_id, item_id: item.item_id, amount: amount , infinite: infinite, price: ratingPrice[item.rating]});
 };
 
 Shops.prototype.getItems = function() {
-	return CharItems.findAll({
-		where: { char_id: this.char_id },
-		include: ['item'],
+	return ShopListing.findAll({
+		where: { shop_id: this.shop_id }
 	});
 };
 
@@ -87,17 +103,17 @@ Shops.prototype.getItems = function() {
 
 
 //Character-item interaction
-Characters.prototype.addItem = async function(item) {
-	const charItem = await UserItems.findOne({
-		where: { char_id: this.char_id, item_id: item.id },
+Characters.prototype.addItem = async function(item, amt) {
+	const charItem = await CharItems.findOne({
+		where: { char_id: this.char_id, item_id: item.item_id },
 	});
 
 	if (charItem) {
-		charItem.amount += 1;
+		charItem.amount += amt;
 		return charItem.save();
 	}
 
-	return CharItems.create({ char_id: this.char_id, item_id: item.id, amount: 1 });
+	return await CharItems.create({ char_id: this.char_id, item_id: item.item_id, amount: amt });
 };
 
 Characters.prototype.getItems = function() {

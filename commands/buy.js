@@ -1,42 +1,57 @@
 const Discord = require('discord.js');
 const finduser = require(`../utilityFunc/finduser.js`);
-const { Users, SoulLink, Characters, ShopListing, Items} = require('../dbObjects');
+const { Users, SoulLink, Characters, ShopListing, Items, Shops, CharItems} = require('../dbObjects');
 const {prefix,currencyUnit} = require("../config.json")
 const { Op } = require('sequelize');
 module.exports = {
 	name: 'buy',
 	description: 'Buy a particular item at the shop',
 	args: true,
-	usage: '<shopname> <name>   \n<shopname> is the name of shop \n<name> is the name of item you want to Buy',
+	usage: '<shopname> <itemName> <quantity>   \n<shopname> is the name of shop \n<itemName> is the name of item you want to Buy \n<quantity> is the quantity you want to buy (default is 1)',
 	aliases: ['purchase'],
 	category: ':money_with_wings: economy',
 	async execute(message, args,dev,campaignWikiMap,currency,client, campaignskeyv) {
 		const cpnNow = await campaignskeyv.get(message.guild.id)
 
-		if(!args.length){
-			const shopDBObjs = await Shops.findAll();
-			console.log(shopDBObjs)
-			return message.channel.send(shopDBObjs.map(shop => `${shop.shop_title} : __**${shop.shop_name}**__`).join('\n'));
+		const shopName = args[0];
+		if(!args[1]){
+			return message.channel.send(`You didn't specify an item name ${message.author}!`);
 		}
+		const itemName = args[1];
 
-		const input = message.content.slice(prefix.length).trim();
-		const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
-		const itemName = commandArgs.split(/ +/g).slice(-1)[0];
-		const shopName = commandArgs.split(/ +/g).slice(0,-1).join(' ');
+		const quant = args[2] ? args[2] : 1
+		if(isNaN(quant)) return message.channel.send(`Sorry ${message.author}! You input an invalid amount`);
+		if(Number(quant) <= 0) return message.channel.send(`Sorry ${message.author} Please input a positive quantity`);
 
-		const sShop = await Shops.findOne({ where: { shop_name: { [Op.like]: shopName } } });
-		if (!sShop) return message.channel.send(`Sorry ${message.author}, that's an invalid shop name.`);
+		const shopDB = await Shops.findOne({ where: { shop_name: { [Op.like]: shopName } } });
+		if (!shopDB) return message.channel.send(`Sorry ${message.author}, that's an invalid shop name.`);
 
+		//find item, if not found return
+		const itemDB = await Items.findOne({ where: { item_name: { [Op.like]: itemName } } });
+		if (!itemDB) return message.channel.send(`Sorry ${message.author}, that's an invalid item name.`);
+
+				
+		const listing = await ShopListing.findOne({where: {item_id: itemDB.item_id, shop_id: shopDB.shop_id}});
 		
 		const soulLinkForUser = await SoulLink.findOne({ where: { user_id: message.author.id, campaign: cpnNow } });
 		if(!soulLinkForUser){
 			return message.channel.send(`Sorry ${message.author}! You do not have a character assigned to you`);
 		}
-		//We assume we can find the character
-		const userChar = await Characters.findOne({ where: { char_id: soulLinkForUser.char_id} });
-		const currentAmount = userChar.balance
+		const chr = await Characters.findOne({ where: { char_id: soulLinkForUser.char_id} });
 
-		const listings = await ShopListing.findAll
+		const cost = Number(quant)*listing.price
+		if(cost > chr.balance) return message.channel.send(`Your character ${chr.char_title} does not have enough to buy the item ${message.author}! You need ${currencyUnit}${cost-chr.balance} more`);
+
+		if(listing.infinite || listing.amount >= quant){
+			await chr.addItem(itemDB, Number(quant));
+			chr.balance -= cost;
+			chr.save();
+			await shopDB.addItem(itemDB, -Number(quant), listing.infinite);
+			const charItemDB = await CharItems.findOne({where: {item_id: itemDB.item_id, char_id: chr.char_id}})
+			return message.channel.send(`Successfully bought __**${itemName}**__ from __**${shopName}**__. \n__**Total number in your inventory:**__ ${charItemDB.amount} \n__**Remaining balance:**__ ${currencyUnit} ${chr.balance} `); 
+		}
+		
+		return message.channel.send(`The shop ${shopName} doesn't have any more stock of ${itemName}`);
 
 		
 

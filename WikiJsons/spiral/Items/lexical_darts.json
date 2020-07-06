@@ -3,7 +3,7 @@
 
 	"name" : "lexical_darts",
 	
-	"description": "A magical dart, infused with ability to target anything in line of sight of user, when the user specifies target. The more descriptions provided about the target, the stronger the impact. If there are multiple targets with the same description of the target, it will choose one at random. You can feel it is imbued with magic.",
+	"description": "A magical dart, infused with ability to target any humanoid entity in line of sight of user, when the user specifies target. The more descriptions provided about the target, the stronger the impact. If there are multiple targets with the same description of the target, it will choose one at random. You can feel it is imbued with magic.",
 
 	"num_limit": 90,
 

@@ -3,7 +3,7 @@
 
 	"name" : "rope",
 	
-	"description": "A long 50m rope, can be used for many things.",
+	"description": "A long 50m rope, can be used for many things. Maximum mass it could hold up is about a mass of a human.",
 
 	"num_limit": 500,
 

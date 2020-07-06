@@ -17,7 +17,7 @@
 
 	"max_hp": 28,
 
-	"current_hp": 28,
+	"current_hp": 25,
 
 	"str":12,
 
@@ -51,7 +51,7 @@
 
 	"speed":30,
 
-	"balance": 0
+	"balance": 220
 
 
 }

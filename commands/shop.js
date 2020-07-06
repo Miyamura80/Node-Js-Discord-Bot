@@ -11,9 +11,10 @@ module.exports = {
 	async execute(message, args,dev,campaignWikiMap,currency,client, campaignskeyv) {
 		const cpnNow = await campaignskeyv.get(message.guild.id)
 
+		const subjectMap = campaignWikiMap.get(cpnNow);
+
 		if(!args.length){
 			const shopDBObjs = await Shops.findAll();
-			console.log(shopDBObjs)
 			return message.channel.send(shopDBObjs.map(shop => `${shop.shop_title} : __**${shop.shop_name}**__`).join('\n'));
 		}
 
@@ -25,24 +26,34 @@ module.exports = {
 		if (!sShop) return message.channel.send(`Sorry ${message.author}, that's an invalid shop name.`);
 
 		
-		const soulLinkForUser = await SoulLink.findOne({ where: { user_id: message.author.id, campaign: cpnNow } });
-		if(!soulLinkForUser){
-			return message.channel.send(`Sorry ${message.author}! You do not have a character assigned to you`);
-		}
-		//We assume we can find the character
-		const userChar = await Characters.findOne({ where: { char_id: soulLinkForUser.char_id} });
-		const currentAmount = userChar.balance
+		const shopResult = subjectMap.get(sShop.shop_name) || subjectMap.find(sbj => sbj.aliases && sbj.aliases.includes(sShop.shop_name));
 
-		const listings = ShopListing.findAll({
+
+		const listings = await ShopListing.findAll({
 			where: { shop_id: sShop.shop_id }
 		});
 
-		const itemssoldAndPrice = listings.map(async lst => {
-			const item = await Items.findOne({ where: { item_id: lst.item_id } });
-			return `${item.item_name} : ${currencyUnit} ${lst.price}`
-		}).join('\n');
+		if(!listings.length){
+			return message.channel.send(`The shop you selected has no items being sold ${message.author}!`);
+		}
 
-		return message.channel.send(itemssoldAndPrice);
+		const playerStat = new Discord.MessageEmbed()
+				.setColor('#fc00fc')
+				.setTitle(`${shopResult.title}`)
+				.setAuthor('Spiral Bot', 'https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/botProfilePic.png', 'https://github.com/Miyamura80/Node-Js-Discord-Bot')
+				.setDescription(`${shopResult.description}`)
+
+		const shopDetails = [];
+		for (const lst of listings){
+			const item = await Items.findOne({ where: { item_id: lst.item_id } });
+			const quantityStr = lst.infinite ? '' : `Amount: ${lst.amount}`
+			if(lst.amount){
+				shopDetails.push(`__${item.item_title}-(${item.rating} Rank):__ ${currencyUnit} ${lst.price} ${quantityStr}`);
+			}
+		}
+		playerStat.addField('__**Listings:**__',shopDetails.join('\n'), true);
+
+		return message.channel.send(playerStat);
 
 	},
 };

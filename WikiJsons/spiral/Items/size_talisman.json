@@ -1,0 +1,26 @@
+{
+	"title": "Sizing Talisman",
+
+	"name" : "size_talisman",
+	
+	"description": "A magical talisman, when attached to a target, will change the size of the target to a size of a apple for 30 seconds. However, when the user attaches the talisman, the user will also double in size for 30 seconds. After 30 seconds, the target will grow back to original size within 0.3 seconds.",
+
+	"num_limit": 90,
+
+	"rating": "A",
+
+	"trivia": "Big boi small boi",
+
+	"allegiance": "Children of the timeless mind",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.9,
+
+	"type": "Items"
+
+}

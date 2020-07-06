@@ -15,9 +15,9 @@
 
 	"level": 5,
 
-	"max_hp": 20,
+	"max_hp": 32,
 
-	"current_hp": 1,
+	"current_hp": 19,
 
 	"str":14,
 
@@ -51,7 +51,7 @@
 
 	"speed":30,
 
-	"balance": 0
+	"balance": 550
 
 
 }

@@ -1,0 +1,28 @@
+{
+	"title": "Diabolical Gauntlet",
+
+	"name" : "diabolical_gauntlet",
+	
+	"description": "A magical gauntlet used in transport industries. The lower the health of the user, the higher the force the user could exert with the gauntlets. It is conditioned with magic to be unusable for direct combat. It is infused with magic of Horicius the mute [1].",
+
+	"num_limit": 90,
+
+	"rating": "A",
+
+	"hyperlinks": ["horicius"],
+
+	"trivia": "It's an item that encourages slavery and poor treatment of the workers",
+
+	"allegiance": "Children of the timeless mind",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.9,
+
+	"type": "Items"
+
+}

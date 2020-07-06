@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 			'default': 0,
 		},
+		infinite: {
+			type: DataTypes.BOOLEAN,
+			'default': false,
+		},
 		price: {
 			type: DataTypes.INTEGER,
 			allowNull: false,

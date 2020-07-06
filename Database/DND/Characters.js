@@ -2,12 +2,12 @@ module.exports = (sequelize, DataTypes) => {
 	return sequelize.define('characters', {
 		char_id: {
 			type: DataTypes.INTEGER,
-			autoIncrement: true,
 			primaryKey: true,
 		},
 		char_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
+			unique: true,
 		},
 		char_title: {
 			type: DataTypes.STRING,
