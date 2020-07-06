@@ -36,6 +36,8 @@ module.exports = {
 		const userChar = await Characters.findOne({ where: { char_id: soulLinkForUser.char_id} });
 		const currentAmount = userChar.balance
 
+		const listings = await ShopListing.findAll
+
 		
 
 	},
