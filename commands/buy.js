@@ -4,7 +4,7 @@ const { Users, SoulLink, Characters, ShopListing, Items} = require('../dbObjects
 const {prefix,currencyUnit} = require("../config.json")
 const { Op } = require('sequelize');
 module.exports = {
-	name: 'buy2',
+	name: 'buy',
 	description: 'Buy a particular item at the shop',
 	args: true,
 	usage: '<shopname> <name>   \n<shopname> is the name of shop \n<name> is the name of item you want to Buy',

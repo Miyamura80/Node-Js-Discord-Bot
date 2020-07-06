@@ -32,9 +32,9 @@ module.exports = {
 
 		ShopListing.create({ user_id: transferTarget.id, balance: 0});
 		
-		//find character pairing, to check for conflicts
-		const soulLinkForChar = await SoulLink.findOne({ where: { char_id: character.char_id, campaign: cpnNow } });
-		if(!soulLinkForChar){
+		//find shop-item pairing, to check for conflicts
+		const itemListing = await ShopListing.findOne({ where: { shop_id: shopDB.shop_id, item_id: itemDB.item_id } });
+		if(!itemListing){
 			const userFind = await Users.findOne({where: {user_id: transferTarget.id}});
 			if(!userFind){
 				Users.create({ user_id: transferTarget.id, balance: 0});
