@@ -30,6 +30,7 @@ module.exports = {
 		const itemDB = await Items.findOne({ where: { item_name: { [Op.like]: itemName } } });
 		if (!itemDB) return message.channel.send(`Sorry ${message.author}, that's an invalid item name.`);
 
+		
 		ShopListing.create({ user_id: transferTarget.id, balance: 0});
 		
 		//find shop-item pairing, to check for conflicts
