@@ -1,32 +1,42 @@
 const Discord = require('discord.js');
-const {CurrencyShop, Users} = require('../dbObjects');
-const {prefix,currencyUnit} = require("../config.json");
+const finduser = require(`../utilityFunc/finduser.js`);
+const { Users, SoulLink, Characters, ShopListing, Items} = require('../dbObjects');
+const {prefix,currencyUnit} = require("../config.json")
 const { Op } = require('sequelize');
 module.exports = {
-	name: 'buy',
+	name: 'buy2',
 	description: 'Buy a particular item at the shop',
 	args: true,
-	usage: '<name>   \n<name> is the name of item you want to Buy',
+	usage: '<shopname> <name>   \n<shopname> is the name of shop \n<name> is the name of item you want to Buy',
 	aliases: ['purchase'],
 	category: ':money_with_wings: economy',
-	async execute(message, args,dev,subjectMap,currency) {
+	async execute(message, args,dev,campaignWikiMap,currency,client, campaignskeyv) {
+		const cpnNow = await campaignskeyv.get(message.guild.id)
+
+		if(!args.length){
+			const shopDBObjs = await Shops.findAll();
+			console.log(shopDBObjs)
+			return message.channel.send(shopDBObjs.map(shop => `${shop.shop_title} : __**${shop.shop_name}**__`).join('\n'));
+		}
 
 		const input = message.content.slice(prefix.length).trim();
 		const [, command, commandArgs] = input.match(/(\w+)\s*([\s\S]*)/);
+		const itemName = commandArgs.split(/ +/g).slice(-1)[0];
+		const shopName = commandArgs.split(/ +/g).slice(0,-1).join(' ');
 
-		const item = await CurrencyShop.findOne({ where: { name: { [Op.like]: commandArgs } } });
-		if (!item) return message.channel.send(`That item doesn't exist.`);
-		if (item.cost > currency.getBalance(message.author.id)) {
-			return message.channel.send(`You currently have ${currency.getBalance(message.author.id)}, but the ${item.name} costs ${item.cost}!`);
+		const sShop = await Shops.findOne({ where: { shop_name: { [Op.like]: shopName } } });
+		if (!sShop) return message.channel.send(`Sorry ${message.author}, that's an invalid shop name.`);
+
+		
+		const soulLinkForUser = await SoulLink.findOne({ where: { user_id: message.author.id, campaign: cpnNow } });
+		if(!soulLinkForUser){
+			return message.channel.send(`Sorry ${message.author}! You do not have a character assigned to you`);
 		}
+		//We assume we can find the character
+		const userChar = await Characters.findOne({ where: { char_id: soulLinkForUser.char_id} });
+		const currentAmount = userChar.balance
 
-		const user = await Users.findOne({ where: { user_id: message.author.id } });
-		currency.add(message.author.id, -item.cost);
-		await user.addItem(item);
-
-		message.channel.send(`You've bought: ${item.name}.`);
-
-
+		
 
 	},
 };

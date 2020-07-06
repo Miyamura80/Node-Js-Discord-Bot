@@ -1,0 +1,16 @@
+{
+	"title": "Fantoccini's Puppet Store",
+
+	"name" : "glimmerdrift_puppet",
+	
+	"description": "What's the difference between a corpse and a puppet? For me, none. But for others, it matters if one was once alive, or one was made from dead corpses. Humans are truly interesting...",
+
+	"allegiance": "Neutral",
+
+	"location": "Glimmerdrift",
+
+	"owner": "fantoccini",
+
+	"type": "Shops"
+
+}

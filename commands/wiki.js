@@ -12,19 +12,21 @@ module.exports = {
 	async execute(message, args,dev,campaignWikiMap,currency,client, campaignskeyv) {
 		const {commands} = message.client;
 		const devUrl = dev.displayAvatarURL({ format: "png", dynamic: true })
+		const currentCampaign = await campaignskeyv.get(message.guild.id)
+
+		const subjectMap = campaignWikiMap.get(currentCampaign);
+
+		let cmpName;
+        const cpnNow = await campaignskeyv.get(message.guild.id)
+        if(cpnNow){
+            cmpName = cpnNow
+        }else{
+            cmpName = defaultCampaign
+        }
+        //short for current campaign content
+        const ccc = require('../campaigns/'+cmpName+'.json')
 
 		if(!args.length){
-			
-            let cmpName;
-            const cpnNow = await campaignskeyv.get(message.guild.id)
-            if(cpnNow){
-                cmpName = cpnNow
-            }else{
-                cmpName = defaultCampaign
-            }
-
-            //Short for current campaign content 
-            const ccc = require('../campaigns/'+cmpName+'.json')
 			
 			const subjLists = new Discord.MessageEmbed()
 				.setColor('#fc00fc')
@@ -33,10 +35,7 @@ module.exports = {
 				.setDescription(`You can search information about the following by: \`${prefix}wiki [search term]\` `)
 				.setFooter('Please help improving this wiki by messaging Eimi for any errors, typos, corrections', devUrl);
 
-			const categories = ["Characters", "Groups", "Items", "Locations", "Concepts"];
-			const currentCampaign = await campaignskeyv.get(message.guild.id)
-			console.log(currentCampaign);
-			const subjectMap = campaignWikiMap.get(currentCampaign);
+			const categories = ["Characters", "Groups", "Items", "Locations", "Concepts"];			
 			for(const categ of categories){
 				var categList = "None";
 				for(const m of subjectMap){
@@ -85,6 +84,10 @@ module.exports = {
 
 			if(searchResult.combat){
 				subjWiki.addField(':crossed_swords:__**Combat:**__', searchResult.combat,inLineSubjWiki)
+			}
+
+			if(searchResult.rating){
+				subjWiki.addField('__**Rating:**__', searchResult.rating,inLineSubjWiki)
 			}
 
 			if(searchResult.origin){

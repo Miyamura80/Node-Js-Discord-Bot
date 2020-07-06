@@ -1,0 +1,16 @@
+{
+	"title": "Theffania's Herbal Store",
+
+	"name" : "glimmerdrift_herbal",
+	
+	"description": "A good adventurer always comes prepared for the unexpected! Come see what I have around",
+
+	"allegiance": "Neutral",
+
+	"location": "Glimmerdrift",
+
+	"owner": "theffania",
+
+	"type": "Shops"
+
+}
