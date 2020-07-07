@@ -48,7 +48,7 @@ module.exports = {
 			const item = await Items.findOne({ where: { item_id: lst.item_id } });
 			const quantityStr = lst.infinite ? '' : `Amount: ${lst.amount}`
 			if(lst.amount){
-				shopDetails.push(`__${item.item_title}-(${item.rating} Rank):__ ${currencyUnit} ${lst.price} ${quantityStr}`);
+				shopDetails.push(`[\`${item.item_name}\`] __${item.item_title}-(${item.rating} Rank):__ ${currencyUnit} ${lst.price} ${quantityStr}`);
 			}
 		}
 		playerStat.addField('__**Listings:**__',shopDetails.join('\n'), true);

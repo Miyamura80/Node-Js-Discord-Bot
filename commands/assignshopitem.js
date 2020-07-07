@@ -32,7 +32,7 @@ module.exports = {
 		if (!itemDB) return message.channel.send(`Sorry ${message.author}, that's an invalid item name.`);
 
 		
-		await shopDB.setItem(itemDB, amount, infinite);
+		await shopDB.setItem(itemDB, Number(amount), infinite);
 
 		const printStr = infinite ? '' : `with ${amount}`
 		

@@ -1,0 +1,26 @@
+{
+	"title": "Dagger",
+
+	"name" : "dagger",
+	
+	"description": "A generic, well crafted 30cm dagger, with a crest of light on the blade. Sharp and simple, it is a trusty tool for many adventurers.",
+
+	"num_limit": 900,
+
+	"rating": "B",
+
+	"trivia": "It can at least have some interesting stuff",
+
+	"allegiance": "Communion of Light",
+
+	"col_value": 1.0,
+
+	"sc_value": 0.8,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.8,
+
+	"type": "Items"
+
+}

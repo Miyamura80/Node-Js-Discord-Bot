@@ -113,6 +113,10 @@ Characters.prototype.addItem = async function(item, amt) {
 		return charItem.save();
 	}
 
+	if(amt <= 0){
+		return 
+	}
+
 	return await CharItems.create({ char_id: this.char_id, item_id: item.item_id, amount: amt });
 };
 

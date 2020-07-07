@@ -1,0 +1,24 @@
+{
+	"title": "Throwing Knife",
+
+	"name" : "throwing_knife",
+	
+	"description": "A small throwing knife, too small to be used as a main weapon. It has a hole on the hilt side. They are so small, a maximum of 3 of them can be thrown at once.",
+
+	"num_limit": 500,
+
+	"rating": "C",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

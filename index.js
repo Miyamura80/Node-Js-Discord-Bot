@@ -59,9 +59,16 @@ var dev = null;
 client.once('ready', async () => {
 	console.log('Ready!');
 	const devID = '270972813739819009'
-	client.user.setActivity(`with the world | ${prefix}help`, {
-	  type: "PLAYING"
-	});
+	if(nodeFlags.isset('debug')){
+		await client.user.setStatus('dnd');
+		client.user.setActivity(`in debug mode. Some features may not work`, {
+		  type: "PLAYING"
+		});
+	}else{
+		client.user.setActivity(`with the world | ${prefix}help`, {
+		  type: "PLAYING"
+		});
+	}
 	dev = client.users.cache.get(devID)
 
 	//sync currency collection with database for easy access later
