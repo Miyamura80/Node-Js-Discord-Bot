@@ -21,6 +21,8 @@ module.exports = {
 			}
 			const chr = await Characters.findOne({ where: { char_id: soulLinkForUser.char_id} });
 			const inline = true;
+			const greenNum = parseInt(27*Number(chr.current_hp)/chr.max_hp)
+			const hpbar = ":green_square:".repeat(greenNum)+ ":red_square:".repeat(27-greenNum);
 			const playerStat = new Discord.MessageEmbed()
 				.setColor('#fc00fc')
 				.setTitle(`${chr.char_title}`)
@@ -29,7 +31,7 @@ module.exports = {
 				.addField('__**Race**__',`${chr.char_race}`,inline)
 				.addField('__**Alignment**__',`${chr.char_alignment}`,inline)
 				.addField('__**Level**__',`${chr.level}`,!inline)
-				.addField('__**HP**__',`${chr.current_hp}/${chr.max_hp}`,!inline)
+				.addField(`__**HP: ${chr.current_hp}/${chr.max_hp}**__`,hpbar,!inline)
 				.addField('__**STRENGTH**__',`${chr.str} (+${chr.str_mod})`,inline)
 				.addField('__**DEXTERITY**__',`${chr.dex} (+${chr.dex_mod})`,inline)
 				.addField('__**CONSTITUTION**__',`${chr.const} (+${chr.const_mod})`,inline)
@@ -50,6 +52,9 @@ module.exports = {
 		const chr = await Characters.findOne({ where: { char_name: { [Op.like]: commandArgs } } });
 		if (!chr) return message.channel.send(`Sorry ${message.author}, that's an invalid character name.`);
 
+		const greenNum = parseInt(27*Number(chr.current_hp)/chr.max_hp)
+		const hpbar = ":green_square:".repeat(greenNum)+ ":red_square:".repeat(27-greenNum);
+
 		const inline = true;
 		const playerStat = new Discord.MessageEmbed()
 			.setColor('#fc00fc')
@@ -59,7 +64,7 @@ module.exports = {
 			.addField('__**Race**__',`${chr.char_race}`,inline)
 			.addField('__**Alignment**__',`${chr.char_alignment}`,inline)
 			.addField('__**Level**__',`${chr.level}`,!inline)
-			.addField('__**HP**__',`${chr.current_hp}/${chr.max_hp}`,!inline)
+			.addField(`__**HP: ${chr.current_hp}/${chr.max_hp}**__`,hpbar,!inline)
 			.addField('__**STRENGTH**__',`${chr.str} (+${chr.str_mod})`,inline)
 			.addField('__**DEXTERITY**__',`${chr.dex} (+${chr.dex_mod})`,inline)
 			.addField('__**CONSTITUTION**__',`${chr.const} (+${chr.const_mod})`,inline)

@@ -19,6 +19,8 @@ sequelize.import('Database/DND/ShopListing');
 sequelize.import('Database/DND/SoulLink');
 sequelize.import('Database/models/Users');
 sequelize.import('Database/models/UserItems');
+sequelize.import('Database/DND/Parties');
+sequelize.import('Database/DND/PartyMatch');
 
 const force = process.argv.includes('--force') || process.argv.includes('-f');
 

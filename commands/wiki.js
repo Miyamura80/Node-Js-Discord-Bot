@@ -61,7 +61,7 @@ module.exports = {
 			const searchResult = subjectMap.get(name) || subjectMap.find(sbj => sbj.aliases && sbj.aliases.includes(name));
 
 			if (!searchResult) {
-				return message.channel.send('Search term not found.');
+				return null;
 			}
 
 			const inLineSubjWiki = false;
@@ -115,6 +115,9 @@ module.exports = {
 
 		function sendRecursiveWikiPage(name){
 			subjWiki = getPage(name)
+			if(!subjWiki){
+				return message.channel.send("Search term not found.");
+			}
 			const searchResult = subjectMap.get(name) || subjectMap.find(sbj => sbj.aliases && sbj.aliases.includes(name));
 			message.channel.send(subjWiki).then(sentEmbed =>{
 				if(searchResult.hyperlinks){
