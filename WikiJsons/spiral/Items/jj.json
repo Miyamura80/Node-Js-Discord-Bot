@@ -1,0 +1,28 @@
+{
+	"title": "JJ (J^2)",
+
+	"name" : "jj",
+	
+	"description": "A recreational drug originally in the world that Janina the genius scientist [1] came from. It is seemingly highly addictive, and causes severe withdrawral syndromes like irregular breathing, headaches, and hallucinations. It is a irregular stimulant, which forcibly cuts certain unnecessary brain connections in the brain to optimize critical/analytical thinking. Janina claims, that when taken, it causes an 'intellectural orgasm'",
+
+	"num_limit": 90,
+
+	"rating": "A",
+
+	"hyperlinks": ["janina"],
+
+	"trivia": "Naming inspired by DD from Hunter x Hunter, as well as JJ from Jojo",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.4,
+
+	"type": "Items"
+
+}

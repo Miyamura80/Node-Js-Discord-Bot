@@ -1,0 +1,26 @@
+{
+	"title": "Human Battery",
+
+	"name" : "human_battery",
+	
+	"description": "A small cylinder, able to draw one of: `additional modifiers`, `skill points`, `HP` and `spell castings` from target it is linked to. It can draw up to 90% of the target's capacity, rounded up. Can be used by taking a bite into the pre-linked cylinder, and screaming the attribute you want to draw. Only usable to those with no magic resistance. \nTo link the battert to a target, one must throw the battery at the target, and shout 'You are mine now'. After use of the cylinder for oneself, the target is notified of what happened.",
+
+	"num_limit": 500,
+
+	"rating": "A",
+
+	"trivia": "Controversial item",
+
+	"allegiance": "Sanguine Circle",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.5,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

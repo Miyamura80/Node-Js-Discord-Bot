@@ -61,15 +61,54 @@ module.exports = {
 			const searchResult = subjectMap.get(name) || subjectMap.find(sbj => sbj.aliases && sbj.aliases.includes(name));
 
 			if (!searchResult) {
+				console.log("jjjjjj");
 				return null;
 			}
+
+			const defaultAttr = {
+				"image": ':eye:__**Last Seen:**__',
+				"combat": ':crossed_swords:__**Combat:**__',
+				"rating": '__**Rating:**__',
+				"origin": ':homes:__**Origin:**__',
+				"allegiance": ':handshake:__**Allegiance:**__',
+				"charRelationships": ':people_holding_hands:__**Character Relationships:**__',
+				"trivia": ':capital_abcd:__**Trivia:**__'
+			};
+
+			var giantString = searchResult.description
+			for(const attr in defaultAttr){
+				if(searchResult[attr]){
+					giantString += searchResult[attr]
+				}
+			}
+
+
+			const references = giantString.match(/\[(.*?)\]/g);
+			var index = 0;
+			const descMod = searchResult.description.replace(/\[(.*?)\]/g, function (x){
+				index += 1;
+				return `${x}: [${index}]`
+			});
+
+			var resultStrs = {}
+			for(const crit in defaultAttr){
+				if(searchResult[crit]){
+					resultStrs[crit] = searchResult[crit].replace(/\[(.*?)\]/g, function (x){
+						index += 1;
+						return `${x}: [${index}]`
+					});
+
+				}
+			}
+
+
 
 			const inLineSubjWiki = false;
 			const subjWiki = new Discord.MessageEmbed()
 					.setColor('#fc00fc')
 					.setTitle(searchResult.title)
 					.setAuthor('Spiral Bot', 'https://raw.githubusercontent.com/Miyamura80/Node-Js-Discord-Bot/master/botProfilePic.png', 'https://github.com/Miyamura80/Node-Js-Discord-Bot')
-					.setDescription(searchResult.description)
+					.setDescription(descMod)
 					.addField('__**Type:**__', searchResult.type, true)
 					.setFooter('Please help improving this wiki by messaging Eimi for any errors, typos, corrections', devUrl);
 
@@ -78,35 +117,13 @@ module.exports = {
 				subjWiki.setThumbnail(imgUrl);
 			}
 
-			if(searchResult.lastSeen){
-				subjWiki.addField(':eye:__**Last Seen:**__', searchResult.lastSeen,true)
+			for(const crit in defaultAttr){
+				if(searchResult[crit]){
+					subjWiki.addField(defaultAttr[crit], resultStrs[crit], inLineSubjWiki)
+				}
 			}
 
-			if(searchResult.combat){
-				subjWiki.addField(':crossed_swords:__**Combat:**__', searchResult.combat,inLineSubjWiki)
-			}
-
-			if(searchResult.rating){
-				subjWiki.addField('__**Rating:**__', searchResult.rating,inLineSubjWiki)
-			}
-
-			if(searchResult.origin){
-				subjWiki.addField(':homes:__**Origin:**__', searchResult.origin,inLineSubjWiki)
-			}
-
-			if(searchResult.allegiance){
-				subjWiki.addField(':handshake:__**Allegiance:**__', searchResult.allegiance,inLineSubjWiki)
-			}
-
-			if(searchResult.charRelationships){
-				subjWiki.addField(':people_holding_hands:__**Character Relationships:**__', searchResult.charRelationships,inLineSubjWiki)
-			}
-
-			if(searchResult.trivia){
-				subjWiki.addField(':capital_abcd:__**Trivia:**__', searchResult.trivia,inLineSubjWiki)
-			}
-
-			return subjWiki
+			return [subjWiki, references]
 		}
 
 
@@ -114,16 +131,18 @@ module.exports = {
 
 
 		function sendRecursiveWikiPage(name){
-			subjWiki = getPage(name)
+			let subjWiki;
+			let references;
+			[subjWiki, references] = getPage(name)
 			if(!subjWiki){
 				return message.channel.send("Search term not found.");
 			}
 			const searchResult = subjectMap.get(name) || subjectMap.find(sbj => sbj.aliases && sbj.aliases.includes(name));
 			message.channel.send(subjWiki).then(sentEmbed =>{
-				if(searchResult.hyperlinks){
+				if(references){
 					var i = 0;
-					const n = searchResult.hyperlinks.length;
-					const hyplks = searchResult.hyperlinks
+					const n = references.length;
+					const hyplks = references.map(refName => refName.slice(1, -1));
 					while(i<n && i < 10){
 						sentEmbed.react(emojis[i]);
 						i += 1;

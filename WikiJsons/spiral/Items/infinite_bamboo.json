@@ -1,0 +1,26 @@
+{
+	"title": "Infinite Bamboo",
+
+	"name" : "infinite_bamboo",
+	
+	"description": "A 30cm bamboo with a diameter of 5cm. When put in contact with water, begins to grow at a rate of 30cm/second in length, and will grow indefinitely until there is not enough room for the bamboo to grow.",
+
+	"num_limit": 500,
+
+	"rating": "A",
+
+	"trivia": "Inspired by Yaiba no Ken",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

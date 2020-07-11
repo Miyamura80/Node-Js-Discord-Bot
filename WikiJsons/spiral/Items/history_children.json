@@ -1,0 +1,26 @@
+{
+	"title": "Holy book of the timeless mind",
+
+	"name" : "history_children",
+	
+	"description": "A book written by a scholar of the tower. Depicts a grande and holy history, as well as the series of epic battles and discoveries by the children of the timeless mind. Contains many information about inventions and discoveries they have made. The book can be read during the journey, and will occasionally gain insight into the group.",
+
+	"num_limit": 90,
+
+	"rating": "S",
+
+	"trivia": "Original item!",
+
+	"allegiance": "Children of the timeless mind",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.7,
+
+	"type": "Items"
+
+}

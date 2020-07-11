@@ -1,0 +1,26 @@
+{
+	"title": "Voodoo Doll",
+
+	"name" : "voodoo_doll",
+	
+	"description": "A cotton-knit doll with one of the eyes having an inserted artificial eye, and a large tongue in front, capable of absorbing liquid. Once conditions are met, it can be used to inflct damage on the humanoid, by dealing damage to the voodoo doll. It is however, impossible to kill the target using the voodoo doll, but severe damage could be done. It can be linked to a humanoid by \n1) making the doll lick the target's blood, \n2) making the target say their own name, and letting the doll hear it \n3) Making the target attack the voodoo doll via direct attack/magic",
+
+	"num_limit": 500,
+
+	"rating": "S",
+
+	"trivia": "Conditions are there for nerfing it's strength.",
+
+	"allegiance": "Sanguine Circle",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.5,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}

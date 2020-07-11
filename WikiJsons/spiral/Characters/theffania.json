@@ -1,0 +1,26 @@
+{
+	"title": "Theffania the Retired",
+
+	"name":"theffania",
+	
+	"description": "The owner of the herbal store in glimmerdrift, and one of the managers of the farm. She is a retired adventurer, filled with wisdoms from when she was once an adventurer. She tends to avoid conversations about the past, and is more focused on helping new adventurers set off. She is implied to know more about the world, but is unwilling to say.",
+	
+	"combat": "Combat capabilities are unknown, but given her background as a former adventurer, she is expected to have some.",
+	
+	"allegiance" : "Way of the hand",
+
+	"origin": "She is implied to have been born in Glimmerdrift",
+
+	"charRelationships" : "-Old acquaintance of Jeremy the champion [1] \n-Friendship with Umfray [2]",
+
+	"hyperlinks": ["jeremy", "umfray"],
+
+	"trivia" : "Originally supposed to be the hospital owner, but changed.",
+
+	"type": "Characters",
+
+	"lastSeen": "Glimmerdrift",
+
+	"aliases": ["retired"]
+
+}

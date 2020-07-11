@@ -1,0 +1,26 @@
+{
+	"title": "History of The way of the Hand",
+
+	"name" : "history_children",
+	
+	"description": "A book written by a scholar of the tower. Neutral depiction of the way of the hand, detailing their history, origins, and what is currently known about them. The book can be read during the journey, and will occasionally gain insight into the group.",
+
+	"num_limit": 90,
+
+	"rating": "A",
+
+	"trivia": "Original item!",
+
+	"allegiance": "Children of the timeless mind",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.3,
+
+	"type": "Items"
+
+}

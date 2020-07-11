@@ -1,0 +1,26 @@
+{
+	"title": "Mix of Herbs",
+
+	"name" : "herb_mix",
+	
+	"description": "A small bag of random herbs mixed together. Grants a random effect to consumer.",
+
+	"num_limit": 500,
+
+	"rating": "C",
+
+	"trivia": "Go for something random!",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}
