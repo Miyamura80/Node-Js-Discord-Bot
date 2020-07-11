@@ -3,17 +3,15 @@
 
 	"name":"aalina",
 	
-	"description": "A cleric from the \"Twin legion [1]\". A woman covered in full metal armor, and is seemingly cripped. She is always seen on her brother Haveron's [2] back. She has never been seen speaking",
+	"description": "A cleric from the \"[twinlegion]\". A woman covered in full metal armor, and is seemingly cripped. She is always seen on her brother [haveron] back. She has never been seen speaking",
 	
-	"combat": "Aalina can cast a spell which puts targets to sleep, as she demonstrated on Quinn the armless [3]",
+	"combat": "Aalina can cast a spell which puts targets to sleep, as she demonstrated on [quinn]",
 
 	"origin": "Haveron said him and Aalina are both from the twin legion to the band of TEMP",
 
 	"status": "alive", 
 
 	"charRelationships" : "-Seems to be only understood by Haveron",
-
-	"hyperlinks": ["twinlegion", "haveron", "quinn"],
 
 	"type": "Characters",
 

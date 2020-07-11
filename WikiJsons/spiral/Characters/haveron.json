@@ -3,7 +3,7 @@
 
 	"name":"haveron",
 	
-	"description": "A knight from the \"Twin legion[1]\". A (man?) covered in full armor, seen carrying his crippled sister aalina[2]. From what has been seen, he is also a fellow adventurer",
+	"description": "A knight from the \"[twinlegion]\". A (man?) covered in full armor, seen carrying his crippled sister [aalina]. From what has been seen, he is also a fellow adventurer",
 	
 	"combat": "Haveron is seen carrying a halberd on his back, with the blade facing down.",
 
@@ -12,8 +12,6 @@
 	"status": "alive", 
 
 	"charRelationships" : "-Feels obliged to pay back the band of TEMP for cooperating in escaping from the embalming lake",
-
-	"hyperlinks": ["twinlegion","aalina"],
 
 	"type": "Characters",
 

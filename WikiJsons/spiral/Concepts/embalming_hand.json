@@ -3,11 +3,9 @@
 
 	"name" : "embalming_hand",
 	
-	"description": "A massive hand located in the middle of embalming lake [1]. The band of TEMP, as well as haveron [2], aalina [3], were summoned on each finger of the hand. \n It seemingly has an ability to move, as it lowered the adventurers after they regained their consciousness down to the lake.",
+	"description": "A massive hand located in the middle of [embalming_lake]. The band of TEMP, as well as haveron [2], aalina [3], were summoned on each finger of the hand. \n It seemingly has an ability to move, as it lowered the adventurers after they regained their consciousness down to the lake.",
 
 	"origin": "Unknown, but said to have association to way of hand",
-
-	"hyperlinks": ["embalming_lake"],
 
 	"aliases" : ["embalming hand", "embalming-hand", "hand of life", "hand_of_life"],
 

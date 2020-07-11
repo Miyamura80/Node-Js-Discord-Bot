@@ -3,17 +3,15 @@
 
 	"name":"umfray",
 	
-	"description": "The owner of tavern of Glimmerdrift [1]. He is openly sexual with most men he sees, calling them his 'Darlings', often inviting them for a drink or a time in the tavern basement. He is however insistent on staying a neutral figure in any situation, and is often helpful when asked.",
+	"description": "The owner of tavern of [glimmerdrift]. He is openly sexual with most men he sees, calling them his 'Darlings', often inviting them for a drink or a time in the tavern basement. He is however insistent on staying a neutral figure in any situation, and is often helpful when asked.",
 	
-	"combat": "Combat capabilities of Umfray are unknown, but Theffania [2] claims that he is the bastion protecting neutrality of Glimmerdrift.",
+	"combat": "Combat capabilities of Umfray are unknown, but [theffania] claims that he is the bastion protecting neutrality of Glimmerdrift.",
 	
 	"allegiance" : "Neutral",
 
 	"origin": "Umfray was originally female, but turned to a man.",
 
-	"charRelationships" : "-Relationship with many men \n-Friendship with Theffania \n-Drinking partners with Anna the handsome",
-
-	"hyperlinks": ["glimmerdrift", "theffania"],
+	"charRelationships" : "-Relationship with many men \n-Friendship with Theffania \n-Drinking partners with [anna]",
 
 	"trivia" : "Image of Umfray based on Bob the bartender from hearthstone.",
 

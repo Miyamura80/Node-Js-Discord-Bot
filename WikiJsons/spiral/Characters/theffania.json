@@ -11,9 +11,7 @@
 
 	"origin": "She is implied to have been born in Glimmerdrift",
 
-	"charRelationships" : "-Old acquaintance of Jeremy the champion [1] \n-Friendship with Umfray [2]",
-
-	"hyperlinks": ["jeremy", "umfray"],
+	"charRelationships" : "-Old acquaintance of [jeremy] \n-Friendship with [umfray]",
 
 	"trivia" : "Originally supposed to be the hospital owner, but changed.",
 

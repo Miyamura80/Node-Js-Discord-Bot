@@ -3,11 +3,9 @@
 
 	"name" : "embalming_lake",
 	
-	"description": "A high ceiling underground lake with a glowing bed which lights up the water, surrounded by tall stalactite. There is a large embalming hand [1] located in the middle, where most adventurers begin their journey. \n A group of goblins were seen mounted near upper walls of the lake with a large artilary.",
+	"description": "A high ceiling underground lake with a glowing bed which lights up the water, surrounded by tall stalactite. There is a large [embalming_hand] located in the middle, where most adventurers begin their journey. \n A group of goblins were seen mounted near upper walls of the lake with a large artilary.",
 
 	"allegiance": "Way of the hand, seized over by communion of light",
-
-	"hyperlinks": ["embalming_hand"],
 
 	"aliases" : ["embalming lake", "embalming-lake"],
 

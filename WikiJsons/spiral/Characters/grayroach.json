@@ -3,15 +3,13 @@
 
 	"name": "grayroach",
 	
-	"description": "Fellow adventurer summoned at the Embalming hand [1] on the pinkie with dral cleric, Samuel wilhelm, Sasare the paladin.",
+	"description": "Fellow adventurer summoned at the [embalming_hand] on the pinkie with dral cleric, Samuel wilhelm, Sasare the paladin.",
 	
-	"lastSeen": "Glimmerdrift [2]",
+	"lastSeen": "Glimmerdrift",
 
 	"origin": "Unknown, but is in a similar situation to the band of TEMP",
 
 	"charRelationships" : "-Suspicious exchange with the band of TEMP",
-
-	"hyperlinks": ["embalming_hand","glimmerdrift"],
 
 	"trivia" : "Inspired by greyrat the thief from DS3",
 
