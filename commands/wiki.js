@@ -61,8 +61,7 @@ module.exports = {
 			const searchResult = subjectMap.get(name) || subjectMap.find(sbj => sbj.aliases && sbj.aliases.includes(name));
 
 			if (!searchResult) {
-				console.log("jjjjjj");
-				return null;
+				return [null,null];
 			}
 
 			const defaultAttr = {
@@ -87,7 +86,7 @@ module.exports = {
 			var index = 0;
 			const descMod = searchResult.description.replace(/\[(.*?)\]/g, function (x){
 				index += 1;
-				return `${x}: [${index}]`
+				return `\`${x}\`-[${index}]`
 			});
 
 			var resultStrs = {}
@@ -95,7 +94,7 @@ module.exports = {
 				if(searchResult[crit]){
 					resultStrs[crit] = searchResult[crit].replace(/\[(.*?)\]/g, function (x){
 						index += 1;
-						return `${x}: [${index}]`
+						return `\`${x}\`-[${index}]`
 					});
 
 				}
