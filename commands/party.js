@@ -34,19 +34,30 @@ module.exports = {
 		const partyListings = await partyDB.getListings();
 
 		const dmOrder = message.member.roles.cache.some(role => role.name === 'DM')
-		if(!dmOrder){
+		if(args.length && !dmOrder){
 			return message.channel.send(`You do not have permission to get information on parties which you aren't in!`);
 		}
+
+		const famebar = ":white_square_button:".repeat(partyDB.fame)+ ":white_large_square:".repeat(10-partyDB.fame);
 
 		const partyEmbed = new Discord.MessageEmbed()
 			.setColor('#fc00fc')
 			.setDescription(`${partyDB.description}`)
-			.setTitle(`__**${partyDB.party_title}**__ (Renown: ${partyDB.fame})`)
+			.setTitle(`__**${partyDB.party_title}**__`)
+			.addField(`__**Fame: ${partyDB.fame}**__`, `${famebar}`, false);
 
+		const healthper = 3
 		for(const lst of partyListings){
 			const partyMember = await Characters.findOne({ where: { char_id: lst.char_id } })
-			const greenNum = parseInt(27*Number(partyMember.current_hp)/partyMember.max_hp)
-			const hpbar = ":green_square:".repeat(greenNum)+ ":red_square:".repeat(27-greenNum);
+			let hpbar;
+			const greenInitTryNum = parseInt(partyMember.current_hp/healthper)
+			const redInitTryNum = parseInt((partyMember.max_hp-partyMember.current_hp)/healthper)
+			if(greenInitTryNum+redInitTryNum > 27){
+				const greenNum = parseInt(27*Number(partyMember.current_hp)/partyMember.max_hp)
+				hpbar = ":green_square:".repeat(greenNum)+ ":red_square:".repeat(27-greenNum);
+			}else{
+				hpbar = ":green_square:".repeat(greenInitTryNum)+ ":red_square:".repeat(redInitTryNum);
+			}
 			const role = lst.role=="Unspecified" ? '' : `(${lst.role})`
 			partyEmbed.addField(`__**Level ${partyMember.level}: ${partyMember.char_title}**__${role}: ${currencyUnit}${partyMember.balance}`, `${hpbar}`, false);
 		}
