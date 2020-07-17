@@ -59,7 +59,7 @@ module.exports = {
 				hpbar = ":green_square:".repeat(greenInitTryNum)+ ":red_square:".repeat(redInitTryNum);
 			}
 			const role = lst.role=="Unspecified" ? '' : `(${lst.role})`
-			partyEmbed.addField(`__**Level ${partyMember.level}: ${partyMember.char_title}**__${role}: ${currencyUnit}${partyMember.balance}`, `${hpbar}`, false);
+			partyEmbed.addField(`__**Level ${partyMember.level}: ${partyMember.char_title}**__${role}: ${currencyUnit}${partyMember.balance} ${partyMember.current_hp}/${partyMember.max_hp}`, `${hpbar}`, false);
 		}
 		
 			

@@ -53,7 +53,7 @@ module.exports = {
 			console.error(err);
 		}
 
-		const entryNumPerPage = 10
+		const entryNumPerPage = 5
 
 		let readings;
 		await fs.readFile(pathToFile, 'utf8', function(err, data) {
