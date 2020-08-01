@@ -1,0 +1,24 @@
+{
+	"title": "Shilzu the unmutable",
+
+	"name":"shilzu",
+	
+	"description": "A large man of 1.8m tall, 1.5m thick. He is an information broker, and claims to know what he knows, and sells that information for profit. He communicates this information through the [teletuber], for those who bought his service.",
+	
+	"combat": "Unknown",
+	
+	"allegiance" : "Children of the timeless mind",
+
+	"origin": "Scholar Tower",
+
+	"charRelationships" : "-A buisness relationship with [anscoul] \n -Respect towards the scholars",
+
+	"trivia" : "Inspired by the reporter bird from one piece",
+
+	"type": "Characters",
+
+	"lastSeen": "Scholar City",
+
+	"aliases": ["journalist"]
+
+}

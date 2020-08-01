@@ -1,0 +1,26 @@
+{
+	"title": "Light Stalk",
+
+	"name" : "light_stalk",
+	
+	"description": "A magical seed, which grows into a large climbable stalk over 18 seconds. The top of the plant grows towards the direction of the brightest light, wherever it was when the seed was first planted.",
+
+	"num_limit": 90,
+
+	"rating": "A",
+
+	"trivia": "Original item!",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}
