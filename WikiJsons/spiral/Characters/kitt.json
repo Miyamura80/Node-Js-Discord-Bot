@@ -1,0 +1,24 @@
+{
+	"title": "Kitt the weaver",
+
+	"name":"kitt",
+	
+	"description": "Once cast out of her village as a witch, and never finding any other humans who understand, she sets out on a journey and meets a companion she swore to be with, [hubert]. She uses string magic, using hardened blood to manifest strings, and weaving objects into other objects.",
+	
+	"combat": "She fights with her blood-magic",
+	
+	"allegiance" : "Sanguine Circle",
+
+	"origin": "Embalming hand",
+
+	"charRelationships" : "-A near symbiotic relationship with [hubert]",
+
+	"trivia" : "Inspired by illya from fate/stay night",
+
+	"type": "Characters",
+
+	"lastSeen": "Giantslayer Walls",
+
+	"aliases": ["weaver"]
+
+}

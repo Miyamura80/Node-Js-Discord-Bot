@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const { Users, SoulLink, Characters, Items} = require('../dbObjects');
+const { Users, SoulLink, Characters, Items, CharItems} = require('../dbObjects');
 const finduser = require(`../utilityFunc/finduser.js`);
 const getusercharacter = require(`../utilityFunc/getusercharacter.js`);
 const { Op } = require('sequelize');
@@ -26,8 +26,14 @@ module.exports = {
 		//find item, if not found return
 		const itemDB = await Items.findOne({ where: { item_name: { [Op.like]: itemName } } });
 		if (!itemDB) return message.channel.send(`Sorry ${message.author}, that's an invalid item name.`);
+
+		const lst = await CharItems.findOne({ where: { item_id: itemDB.item_id } })
 		
-		await chr.addItem(itemDB, -Number(amount));
+		if(lst.amount){
+			await chr.addItem(itemDB, -Number(amount));
+		}else{
+			return message.channel.send(`You don't have ${itemName} in your inventory!`)
+		}
 		
 		return message.channel.send(`Successfully used ${amount} ${itemName}`);
 

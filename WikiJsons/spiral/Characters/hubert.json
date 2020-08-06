@@ -1,0 +1,24 @@
+{
+	"title": "Hubert the weaved",
+
+	"name":"hubert",
+	
+	"description": "A half-giant, the last remaining of the giant race. His parents have been killed in the [giantslayer_walls] and has multiple hands of corpses weaved onto his body.",
+	
+	"combat": "He fights with objects around him that he picks up on the fly, such as boulders, posts, even houses. His intellect has a lot to be desired.",
+	
+	"allegiance" : "Sanguine Circle",
+
+	"origin": "Giantslayer Walls",
+
+	"charRelationships" : "-A near symbiotic relationship with [kitt]",
+
+	"trivia" : "Inspired by berserker from fate/stay night",
+
+	"type": "Characters",
+
+	"lastSeen": "Giantslayer Walls",
+
+	"aliases": ["half-giant"]
+
+}

@@ -1,0 +1,26 @@
+{
+	"title": "Scholar City Token",
+
+	"name" : "scholar_city_token",
+	
+	"description": "An artifact gem. When dropped, generates a magic circle of 1m radius. Transports the first humanoid that steps into the magical circle back to a random location in [scholar_city].",
+
+	"num_limit": 90,
+
+	"rating": "A",
+
+	"trivia": "It's a teleporter",
+
+	"allegiance": "Neutral",
+
+	"col_value": 1.0,
+
+	"sc_value": 1.0,
+
+	"woth_value": 1.0,
+
+	"cotm_value": 1.0,
+
+	"type": "Items"
+
+}
