@@ -7,6 +7,7 @@
 ![watch this repo](https://img.shields.io/github/watchers/miyamura80/Node-Js-Discord-Bot?color=058ed9&style=for-the-badge)
 ![license](https://img.shields.io/github/license/miyamura80/Node-Js-Discord-Bot?color=058ed9&style=for-the-badge)
 ![repo size](https://img.shields.io/github/repo-size/miyamura80/Node-Js-Discord-Bot?color=058ed9&style=for-the-badge)
+
 This bot was designed with augmenting my own original campaign on dungeons and dragons, a tabletop role playing game.  
 
 Before you start, you must add a `config.json` file to the root directory, which may look something like the following:
