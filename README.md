@@ -25,3 +25,5 @@ config.json
 	}
 }
 ```
+
+To run the discord bot, install [Node JS](https://nodejs.org/en/download/) and run `node index.js` in the directory.
